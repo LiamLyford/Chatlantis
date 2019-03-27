@@ -1,0 +1,19 @@
+{
+  "name": "chatlantis",
+  "version": "1.0.0",
+  "description": "chat room server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElephantOfKnowledge/Node.git"
+  },
+  "author": "Liam Lyford, Natalie Tou, Olivia Pangkiey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElephantOfKnowledge/Node/issues"
+  },
+  "homepage": "https://github.com/ElephantOfKnowledge/Node#readme"
+}
