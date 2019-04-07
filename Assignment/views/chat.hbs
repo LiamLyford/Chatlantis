@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>{{title}}</title>
-    {{> chat-style}}
+    {{> chatStyle}}
     <script src="/socket.io/socket.io.js"></script>
     {{!-- <script src="../chat.js"></script> --}}
   </head>
@@ -12,4 +12,5 @@
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
   </body>
+  {{> chatScript}}
 </html>
