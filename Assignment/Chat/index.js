@@ -21,40 +21,9 @@ io.use(socketCookies());
 //   next();
 // });
 
-// class message {
-//   constructor(msg, userID, timeStamp) {
-//     this.msg = msg;
-//     this.userID = userID;
-//     this.timeStamp = timeStamp;
-//   };
-// };
-
-
-
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
-
-// var resetLogs = () => {
-//   var filestart = []
-//   db = './logs.json';
-//   fs.writeFileSync(db, JSON.stringify(filestart));
-//   console.log("Data reset!");
-// }
-
-// resetLogs();
-
-// var logMessage = (msg, user, time) => {
-//   db = './logs.json'; 
-//   logs = JSON.parse(fs.readFileSync(db)); 
-//   var log = {
-//     message: msg,
-//     userID: user,
-//     timeStamp: time
-//   };
-//   logs.push(log);
-//   fs.writeFileSync(db, JSON.stringify(logs));
-// }
 
 io.on('connection', (socket) => {
   // user = socket.request.cookies.name;
@@ -66,7 +35,6 @@ io.on('connection', (socket) => {
   console.log('User connected!')
   socket.on('chat message', (msg, user, time) => {
     io.emit('chat message', msg, user, time);
-    // logMessage(msg, user, time);
   });
 });
 
