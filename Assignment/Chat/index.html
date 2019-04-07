@@ -29,18 +29,32 @@
     var socket = io();
     postMessage = () => {
         event.preventDefault();
-        socket.emit('chat message', document.getElementById('m').value, thisUser);
+        time = new Date();
+        hours = time.getHours();
+        minutes = time.getMinutes();
+        ampm = (hours >= 12 ? "pm" : "am")
+        if (hours > 12){
+          hours -= 12;
+        } else if (hours === 0) {
+          hours = 12;
+        }
+        if (minutes < 10) {
+          minutes = "0" + minutes
+        }
+        timeStamp =  hours + ":" + minutes + ampm;
+        socket.emit('chat message', document.getElementById('m').value, thisUser, timeStamp);
         document.getElementById('m').value = '';
         return false
     };
-    socket.on('chat message', (msg, user) => {
+    socket.on('chat message', (msg, user, msgTime) => {
       if (user === thisUser){
         message = '<li class="user">';
       } else {
         message = '<li>';
       }
-      message += user + ':<br>' + msg + '</li>'
+      message += user + ' - ' + msgTime + '<br>' + msg + '</li>'
       document.getElementById('messages').innerHTML += message;
+      // socket.emit('log message', message);
     });
     // socket.on('new connect', () => {
     //   message = '<li>' + user + ' connected!' + '</li>'
