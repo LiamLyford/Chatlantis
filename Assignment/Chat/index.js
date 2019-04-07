@@ -2,14 +2,18 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var socketCookies = require('socket.io-cookie-parser');
+// var cookieParser = require('cookie-parser');
+// var session = require('express-session');
+// var socketCookies = require('socket.io-cookie-parser');
+// var fs = require('fs'); 
 
-app.use(cookieParser());
-app.use(session({secret: 'secret'}));
-io.use(socketCookies());
+// app.use(cookieParser());
+// app.use(session({secret: 'secret'}));
+// io.use(socketCookies());
 
+//FOR MULTIPLE ROOMS USE SOCKET NAME SPACES
+
+//FOR CHAT LOGS MAKE CHAT OBJECTS FOR EACH MESSAGE
 
 // app.use((req, res, next) => {
 //   var randomIndex = Math.floor(Math.random() * testUsers.length);
@@ -28,8 +32,9 @@ io.on('connection', (socket) => {
   // socket.on('disconnect', () => {
   //   io.emit('disconnect');
   // });
-  socket.on('chat message', (msg, user) => {
-    io.emit('chat message', msg, user);
+  console.log('User connected!')
+  socket.on('chat message', (msg, user, time) => {
+    io.emit('chat message', msg, user, time);
   });
 });
 
