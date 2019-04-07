@@ -8,6 +8,7 @@ const session = require('express-session');
 // const passport = require('passport');
 const hbs = require('hbs');
 const bcrypt = require('bcrypt-nodejs');
+const port = process.env.PORT || 8080;
 
 var utils = require('./utils');
 var app = express();
@@ -156,7 +157,7 @@ app.get('/logout', (req, res)=> {
     res.send("You've logged out.")
 });
 
-http.listen(8080, ()=>{
+http.listen(port, ()=>{
     console.log('Server is up on the port 8080');
     utils.init();
 });
