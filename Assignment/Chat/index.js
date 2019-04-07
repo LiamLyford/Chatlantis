@@ -2,14 +2,14 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var socketCookies = require('socket.io-cookie-parser');
-var fs = require('fs'); 
+// var cookieParser = require('cookie-parser');
+// var session = require('express-session');
+// var socketCookies = require('socket.io-cookie-parser');
+// var fs = require('fs'); 
 
-app.use(cookieParser());
-app.use(session({secret: 'secret'}));
-io.use(socketCookies());
+// app.use(cookieParser());
+// app.use(session({secret: 'secret'}));
+// io.use(socketCookies());
 
 //FOR MULTIPLE ROOMS USE SOCKET NAME SPACES
 
