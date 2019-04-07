@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{h1}}</h1>
+    <form action="/login-form" method="post">
+            <label for={{box1}}>{{box1}}:</label>
+            <input type="text" id={{box1}} name={{box1}} placeholder="Enter your username" required />
+            {{!-- {{name field for object}} --}}
+            <label for={{box2}}>{{box2}}:</label>
+            <input type="password" id={{box2}} name={{box2}} placeholder="Enter your password" required/>
+
+            <input type="submit" value="Log in" />
+    </form>
+</body>
+{{> footer}}
+</html>
