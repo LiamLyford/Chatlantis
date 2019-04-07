@@ -115,12 +115,6 @@ app.post('/signup-form', (req, res)=> {
     });
 });
 
-app.get('/chat', (req, res)=> {
-    res.render('chat.hbs', {
-        title: 'Chatlantis'
-    });
-});
-
 app.listen(8080, ()=>{
     console.log('Server is up on the port 8080');
     utils.init();
