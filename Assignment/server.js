@@ -124,7 +124,9 @@ app.get('/chatroom', (req, res)=> {
     if (!req.session.user){
         res.send('You have not logged in.')
     }else{
-        res.send('Welcome to the chatroom!')
+        res.render('chat.hbs', {
+            title: 'Chatlantis'
+        });
     }
 });
 
@@ -132,7 +134,6 @@ app.get('/logout', (req, res)=> {
     req.session.destroy();
     res.send("You've logged out.")
 });
-
 
 app.listen(8080, ()=>{
     console.log('Server is up on the port 8080');
