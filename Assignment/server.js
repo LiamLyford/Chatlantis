@@ -11,6 +11,7 @@ const bcrypt = require('bcrypt-nodejs');
 
 var utils = require('./utils');
 var app = express();
+var today = new Date();
 
 hbs.registerPartials(__dirname + '/views/partials');
 
@@ -28,7 +29,7 @@ app.use(session({
 // app.use(passport.session());
 
 hbs.registerHelper('getCurrentYear', ()=>{
-    return new Date().getFullYear();
+    return today.getFullYear();
 });
 
 app.get('/', (req, res)=>{
@@ -37,7 +38,9 @@ app.get('/', (req, res)=>{
         h1: 'Welcome .....',
         link1: 'Sign up',
         link2: 'Log in',
-        pages: ['/signup', '/login']
+        link3: 'Chatroom',
+        link4: 'Log out',
+        pages: ['/signup', '/login', '/chatroom', '/logout']
     });
 });
 
@@ -66,7 +69,8 @@ app.post('/login-form', (req, res)=> {
             // console.log(typeof password);
             // console.log(user[0].hash);
             if (bcrypt.compareSync(password, user[0].hash)){
-                res.redirect('/');
+                req.session.user = user;
+                res.redirect('/chatroom');
             }else{
                 res.send('Incorrect password.')
             }
@@ -105,7 +109,8 @@ app.post('/signup-form', (req, res)=> {
                 username: username,
                 //password: password,
                 hash: bcrypt.hashSync(password),
-                email: email
+                email: email,
+                registration_date: today
             });
             res.send(req.body);
         }else{
@@ -114,6 +119,20 @@ app.post('/signup-form', (req, res)=> {
 
     });
 });
+
+app.get('/chatroom', (req, res)=> {
+    if (!req.session.user){
+        res.send('You have not logged in.')
+    }else{
+        res.send('Welcome to the chatroom!')
+    }
+});
+
+app.get('/logout', (req, res)=> {
+    req.session.destroy();
+    res.send("You've logged out.")
+});
+
 
 app.listen(8080, ()=>{
     console.log('Server is up on the port 8080');
