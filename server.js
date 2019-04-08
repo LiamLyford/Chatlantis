@@ -115,7 +115,9 @@ app.post('/signup-form', (req, res)=> {
                 email: email,
                 registration_date: today
             });
-            res.send(req.body);
+            // res.send(req.body);
+            req.session.user = user;
+            res.redirect('/chatroom');
         }else{
             res.send('User exists.');
         }
