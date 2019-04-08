@@ -11,7 +11,7 @@ module.exports.init = function(callback){
     const client = new MongoClient(uri, { useNewUrlParser: true });
     client.connect(err => {
         if (err){
-            return console.log('Unable to connect to DB');
+            return new Error('Unable to connect to DB');
         } else {
             _db = client.db("chatroom");
             console.log('Successfully connected to MongoDB server');
