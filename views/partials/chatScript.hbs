@@ -22,12 +22,18 @@ var postMessage = () => {
     return false
 };
 
+var updateScroll = () => {
+    var messages = document.getElementById("messageContainer");
+    messages.scrollTop = messages.scrollHeight;
+}
+
 socket.on('chat message', (msg, user, msgTime) => {
     if (user === username){
     message = '<li class="user">';
     } else {message = '<li>';}
     message += user + ' - ' + msgTime + '<br>' + msg + '</li>'
     document.getElementById('messages').innerHTML += message;
+    updateScroll();
 });
 // socket.on('new connect', () => {
 //   message = '<li>' + user + ' connected!' + '</li>'
