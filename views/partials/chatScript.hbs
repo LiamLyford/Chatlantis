@@ -1,5 +1,5 @@
 <script>
-const getTime = () => {
+var getTime = () => {
     time = new Date();
     hours = time.getHours();
     minutes = time.getMinutes();
@@ -8,6 +8,11 @@ const getTime = () => {
         else if (hours === 0) {hours = 12;}
     if (minutes < 10) {minutes = "0" + minutes}
     return  (hours + ":" + minutes + ampm)
+};
+
+var updateScroll = () => {
+    var messages = document.getElementById("messageContainer");
+    messages.scrollTop = messages.scrollHeight;
 };
 
 var socket = io('/chatroom');
@@ -22,16 +27,11 @@ var postMessage = () => {
     return false
 };
 
-var updateScroll = () => {
-    var messages = document.getElementById("messageContainer");
-    messages.scrollTop = messages.scrollHeight;
-}
-
 socket.on('chat message', (msg, user, msgTime) => {
     if (user === username){
-    message = '<li class="user">';
+    message = `<li class="user"><a href=/profile/${user}>`;
     } else {message = '<li>';}
-    message += user + ' - ' + msgTime + '<br>' + msg + '</li>'
+    message += user + '</a> - ' + msgTime + '<br>' + msg + '</li>'
     document.getElementById('messages').innerHTML += message;
     updateScroll();
 });
