@@ -151,11 +151,11 @@ chat.on('connection', (socket) => {
         console.log('User disconnected :(');
     });
     console.log('User connected!');
-    socket.on('chat message', (msg, user, time) => {
+    socket.on('chat message', (msg, user, time, colour) => {
         // console.log(req.session.user);
         msg = msg.replace(/</gi, ""); //basic sanitization
         msg = msg.replace(/>/gi, "");
-        chat.emit('chat message', msg, user, time);
+        chat.emit('chat message', msg, user, time, colour);
     });
 });
 

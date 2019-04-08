@@ -15,6 +15,8 @@ var updateScroll = () => {
     messages.scrollTop = messages.scrollHeight;
 };
 
+var randomColour = Math.floor(Math.random()*16777215).toString(16);
+
 var socket = io('/chatroom');
 
 var username = "{{username}}";
@@ -22,16 +24,17 @@ var username = "{{username}}";
 var postMessage = () => {
     event.preventDefault();
     timeStamp = getTime();
-    socket.emit('chat message', document.getElementById('m').value, username, timeStamp);
+    socket.emit('chat message', document.getElementById('m').value, username, timeStamp, randomColour);
     document.getElementById('m').value = '';
     return false
 };
 
-socket.on('chat message', (msg, user, msgTime) => {
+socket.on('chat message', (msg, user, msgTime, colour) => {
     if (user === username){
-    message = `<li class="user"><a href=/profile/${user}>`;
+    message = '<li class="user">';
     } else {message = '<li>';}
-    message += user + '</a> - ' + msgTime + '<br>' + msg + '</li>'
+    //style = `a:link, a:visited, a:hover, a:active { color: #${colour}; text-decoration: none }`
+    message += `<span style="color: #${colour}"><a href=/profile/${user} target="_blank" >` + user + '</a></span> - ' + msgTime + '<br>' + msg + '</li>'
     document.getElementById('messages').innerHTML += message;
     updateScroll();
 });
