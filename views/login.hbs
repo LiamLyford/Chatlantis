@@ -3,26 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {{> bootstrap}}
     {{> Style}}
 
 </head>
-<body>
-    <h1>{{h1}}</h1>
-    <form>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+<body class="background">
+<nav class="navbar navbar-expand-lg navbar-light background">
+    <a class="navbar-brand" style="font-family: 'Amatic SC', cursive; font-size: 25px; font-weight: bolder" href="#">CHATLANTIS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link " href="{{pages.[1]}}" role="button">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Log In <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{{pages.[0]}}" role="button">Sign Up</a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+
+
+        <form action="/login-form" method="post" class="LogColor container-fluid">
+            <a class="font3" > L O G I N </a>
+            <hr style="border: black solid 1px">
+            <div class="form-group margin2" >
+                <label class="font2">Username: </label>
+                <input type="text" class="form-control" name="{{box1}}" id="{{box1}}" placeholder="Enter Username" required />
+
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="{{box2}}" placeholder="Enter you Password">
+            <div class="form-group margin2">
+                <label class="font2">Password: </label>
+                <input type="password" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="Password" required/>
             </div>
-        </div>
-    </form>
+            <button type="submit" class="btn btn-primary" style="margin: 22px">Submit</button>
+        </form>
+
+    <!--
     <form action="/login-form" method="post">
             <label for={{box1}}>{{box1}}:</label>
             <input type="text" id={{box1}} name={{box1}} placeholder="Enter your username" required />
@@ -32,6 +58,7 @@
 
             <input type="submit" value="Log in" />
     </form>
+    -->
 </body>
 {{> footer}}
 </html>
