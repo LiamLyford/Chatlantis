@@ -153,6 +153,8 @@ chat.on('connection', (socket) => {
     console.log('User connected!');
     socket.on('chat message', (msg, user, time) => {
         // console.log(req.session.user);
+        msg = msg.replace(/</gi, ""); //basic sanitization
+        msg = msg.replace(/>/gi, "");
         chat.emit('chat message', msg, user, time);
     });
 });

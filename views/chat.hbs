@@ -8,10 +8,14 @@
   </head>
   <body>
     <a href={{link}}>{{page}}</a>
+    <div id='messageContainer'>
     <ul id="messages"></ul>
+    </div>
+    <div>
     <form id="f" action="" onsubmit='postMessage()'>
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
+    </div>
   </body>
   {{> chatScript}}
 </html>
