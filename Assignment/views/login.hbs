@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    {{> bootstrap}}
+    {{> Style}}
+
 </head>
 <body>
     <h1>{{h1}}</h1>
+    <form>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="{{box2}}" placeholder="Enter you Password">
+            </div>
+        </div>
+    </form>
     <form action="/login-form" method="post">
             <label for={{box1}}>{{box1}}:</label>
             <input type="text" id={{box1}} name={{box1}} placeholder="Enter your username" required />
