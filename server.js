@@ -116,10 +116,9 @@ app.post('/signup-form', (req, res)=> {
                 registration_date: today
             });
             // res.send(req.body);
-            req.session.user = user;
-            res.redirect('/chatroom');
+            res.redirect('/login');
         }else{
-            res.send('User exists.');
+            res.send('User already exists.');
         }
 
     });
