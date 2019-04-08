@@ -50,7 +50,8 @@ app.get('/login', (req, res)=> {
         title: 'Login',
         h1: 'Login',
         box1: 'username',
-        box2: 'password'
+        box2: 'password',
+        pages: ['/signup',  '/']
     });
 });
 
