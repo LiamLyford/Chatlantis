@@ -7,11 +7,14 @@ module.exports.getDb = function(){
 };
 
 module.exports.init = function(callback){
-    MongoClient.connect('mongodb://localhost:27017/chatroom', function(err, client){
+    const uri = 'mongodb+srv://Heroku:3wayHandsh%40ke@cluster0-ht3vg.mongodb.net/test?retryWrites=true';
+    const client = new MongoClient(uri, { useNewUrlParser: true });
+    client.connect(err => {
         if (err){
             return console.log('Unable to connect to DB');
+        } else {
+            _db = client.db("chatroom");
+            console.log('Successfully connected to MongoDB server');
         }
-        _db = client.db('chatroom');
-        console.log('Successfully connected to MongoDB server');
     });
 };
