@@ -8,9 +8,12 @@ const session = require('express-session');
 // const passport = require('passport');
 const hbs = require('hbs');
 const bcrypt = require('bcrypt-nodejs');
+const port = process.env.PORT || 8080;
 
 var utils = require('./utils');
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 var today = new Date();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -112,9 +115,10 @@ app.post('/signup-form', (req, res)=> {
                 email: email,
                 registration_date: today
             });
-            res.send(req.body);
+            // res.send(req.body);
+            res.redirect('/login');
         }else{
-            res.send('User exists.');
+            res.send('User already exists.');
         }
 
     });
@@ -125,9 +129,28 @@ app.get('/chatroom', (req, res)=> {
         res.send('You have not logged in.')
     }else{
         res.render('chat.hbs', {
-            title: 'Chatlantis'
+            title: 'Chatlantis',
+            page: 'Log out',
+            link: '/logout',
+            username: `${req.session.user[0].username}`
         });
     }
+});
+
+var chat = io.of('/chatroom');
+chat.on('connection', (socket) => {
+    // user = socket.request.cookies.name;
+    // console.log(socket.request.cookies.name);
+    // io.emit('new connect');
+    socket.on('disconnect', () => {
+    //   io.emit('disconnect');
+        console.log('User disconnected :(');
+    });
+    console.log('User connected!')
+    socket.on('chat message', (msg, user, time) => {
+        // console.log(req.session.user);
+        chat.emit('chat message', msg, user, time);
+    });
 });
 
 app.get('/logout', (req, res)=> {
@@ -135,7 +158,7 @@ app.get('/logout', (req, res)=> {
     res.send("You've logged out.")
 });
 
-app.listen(8080, ()=>{
+http.listen(port, ()=>{
     console.log('Server is up on the port 8080');
     utils.init();
 });

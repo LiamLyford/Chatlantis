@@ -1,8 +1,4 @@
 <script>
-var testUsers = ['Cow', 'Bear', 'Pig', 'Asshat'];
-var randomIndex = Math.floor(Math.random() * testUsers.length);
-var thisUser = testUsers[randomIndex];
-
 const getTime = () => {
     time = new Date();
     hours = time.getHours();
@@ -12,24 +8,24 @@ const getTime = () => {
         else if (hours === 0) {hours = 12;}
     if (minutes < 10) {minutes = "0" + minutes}
     return  (hours + ":" + minutes + ampm)
-}
+};
 
-var socket = io();
+var socket = io('/chatroom');
+
+var username = "{{username}}";
 
 var postMessage = () => {
     event.preventDefault();
-    time = getTime();
-    socket.emit('chat message', document.getElementById('m').value, thisUser, timeStamp);
+    timeStamp = getTime();
+    socket.emit('chat message', document.getElementById('m').value, username, timeStamp);
     document.getElementById('m').value = '';
     return false
 };
 
 socket.on('chat message', (msg, user, msgTime) => {
-    if (user === thisUser){
+    if (user === username){
     message = '<li class="user">';
-    } else {
-    message = '<li>';
-    }
+    } else {message = '<li>';}
     message += user + ' - ' + msgTime + '<br>' + msg + '</li>'
     document.getElementById('messages').innerHTML += message;
 });
