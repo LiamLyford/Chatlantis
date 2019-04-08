@@ -41,9 +41,7 @@ app.get('/', (req, res)=>{
         h1: 'Welcome .....',
         link1: 'Sign up',
         link2: 'Log in',
-        link3: 'Chatroom',
-        link4: 'Log out',
-        pages: ['/signup', '/login', '/chatroom', '/logout']
+        pages: ['/signup', '/login']
     });
 });
 
@@ -89,8 +87,10 @@ app.get('/signup', (req, res)=> {
         title: 'Sign up',
         h1: 'Sign up',
         box1: 'username',
-        box2: 'password',
-        box3: 'email'
+        box2: 'first_name',
+        box3: 'last_name',
+        box4: 'password',
+        box5: 'email'
     });
 });
 
@@ -98,6 +98,8 @@ app.post('/signup-form', (req, res)=> {
     //res.send(req.body);
     var username = req.body.username;
     var password = req.body.password;
+    var first_name = req.body.first_name;
+    var last_name = req.body.last_name;
     //var hash = bcrypt.hashSync(req.body.password);
     var email = req.body.email;
 
@@ -112,6 +114,8 @@ app.post('/signup-form', (req, res)=> {
                 username: username,
                 //password: password,
                 hash: bcrypt.hashSync(password),
+                first_name: first_name,
+                last_name: last_name,
                 email: email,
                 registration_date: today
             });
@@ -146,7 +150,7 @@ chat.on('connection', (socket) => {
     //   io.emit('disconnect');
         console.log('User disconnected :(');
     });
-    console.log('User connected!')
+    console.log('User connected!');
     socket.on('chat message', (msg, user, time) => {
         // console.log(req.session.user);
         chat.emit('chat message', msg, user, time);
@@ -156,6 +160,22 @@ chat.on('connection', (socket) => {
 app.get('/logout', (req, res)=> {
     req.session.destroy();
     res.send("You've logged out.")
+});
+
+app.get('/profile/:username', function(req, res) {
+    var db = utils.getDb();
+    db.collection('users').find({username: req.params.username}).toArray(function(err,user){
+        if (err){
+            res.send('User does not exist.');
+        }else{
+            res.render('profile.hbs', {
+                title: 'Profile',
+                name: user[0].first_name + " " + user[0].last_name,
+                email: user[0].email
+            });
+        }
+
+    });
 });
 
 http.listen(port, ()=>{
