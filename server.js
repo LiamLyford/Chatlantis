@@ -144,6 +144,7 @@ app.get('/profile/:username', function(req, res) {
         }else{
             res.render('profile.hbs', {
                 title: 'Profile',
+                username: user[0].username,
                 name: user[0].first_name + " " + user[0].last_name,
                 email: user[0].email
             });
@@ -159,7 +160,7 @@ app.get('/chatroom', (req, res)=> {
         res.render('chat.hbs', {
             title: 'Chatlantis',
             page: 'Log out',
-            link: '/logout',
+            link: '/',
             username: `${req.session.user[0].username}`
         });
     }
