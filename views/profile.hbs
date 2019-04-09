@@ -3,11 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    {{> bootstrap}}
+    {{> Style}}
+
 </head>
-<body>
-    <h3>Username: {{username}}</h3>
-    <h3>Name: {{name}}</h3>
-    <h3>Email: {{email}}</h3>
+<body class="background">
+<nav class="navbar navbar-expand-lg navbar-light background">
+    <a class="navbar-brand" style="font-family: 'Amatic SC', cursive; font-size: 25px; font-weight: bolder" href="#">CHATLANTIS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+            <li class="nav-item ">
+                <a class="nav-link" role="button" href={{link}}>Log out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="ProfileColor">
+    <p class="font3 align2" style="text-align: center" > P R O F I L E </p>
+    <hr style="border: black solid 1px">
+    <div class="form-group  align" >
+        <label class="font2" style="font-size: 20px">Username: </label>
+        <p>{{username}}</p>
+
+    </div>
+    <div class="form-group  align" >
+        <label class="font2" style="font-size: 20px" >Name: </label>
+        <p>{{name}}</p>
+    </div>
+    <div class="form-group  align" >
+        <label class="font2" style="font-size: 20px" >Email: </label>
+        <p>{{email}}</p>
+    </div>
+</div>
+
 </body>
 {{> footer}}
 </html>
