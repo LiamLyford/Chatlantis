@@ -166,12 +166,11 @@ app.get('/chatroom', (req, res)=> {
 
 var chat = io.of('/chatroom');
 chat.on('connection', (socket) => {
-    console.log('User connected!');
+    // console.log('User connected!');
     socket.hasName = false;
-    // io.emit('new connect');
     socket.on('disconnect', () => {
-    //   io.emit('disconnect');
-        console.log('User disconnected :(');
+        chat.emit('disconnect', socket.username, socket.colour);
+        // console.log('User disconnected :(');
     });
 
     socket.on('add user', (user, colour) => {
@@ -179,11 +178,11 @@ chat.on('connection', (socket) => {
             socket.username = user;
             socket.colour = colour;
             socket.hasName = true;
+            socket.emit('new connect', socket.username, socket.colour);
         };
     });
 
     socket.on('chat message', (msg) => {
-        // console.log(req.session.user);
         time = msgs.getTime();
         try {
             msg = msgs.createMessage(msg, socket.username, time, socket.colour);
