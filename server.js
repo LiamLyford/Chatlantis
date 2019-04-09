@@ -130,7 +130,7 @@ app.post('/signup-form', (req, res)=> {
 
 app.get('/logout', (req, res)=> {
     req.session.destroy();
-    res.send("You've logged out.")
+    res.redirect("/");
 });
 
 app.get('/profile/:username', function(req, res) {
@@ -153,12 +153,12 @@ app.get('/profile/:username', function(req, res) {
 
 app.get('/chatroom', (req, res)=> {
     if (!req.session.user){
-        res.send('You have not logged in.')
+        res.redirect('/login')
     }else{
         res.render('chat.hbs', {
             title: 'Chatlantis',
             page: 'Log out',
-            link: '/',
+            link: '/logout',
             username: `${req.session.user[0].username}`
         });
     }
