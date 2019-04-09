@@ -10,6 +10,9 @@ socket.emit('add user', username, randomColour, socket.id);
 
 var postMessage = () => {
     event.preventDefault();
+    if(document.getElementById('m').value === ''){
+        return false
+    }
     socket.emit('chat message', document.getElementById('m').value);
     document.getElementById('m').value = '';
     return false
