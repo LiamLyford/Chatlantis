@@ -1,19 +1,4 @@
 <script>
-var getTime = () => {
-    time = new Date();
-    hours = time.getHours();
-    minutes = time.getMinutes();
-    ampm = (hours >= 12 ? "pm" : "am")
-    if (hours > 12){hours -= 12;} 
-        else if (hours === 0) {hours = 12;}
-    if (minutes < 10) {minutes = "0" + minutes}
-    return  (hours + ":" + minutes + ampm)
-};
-
-var updateScroll = () => {
-    var messages = document.getElementById("messageContainer");
-    messages.scrollTop = messages.scrollHeight;
-};
 
 var randomColour = Math.floor(Math.random()*16777215).toString(16);
 
@@ -21,21 +6,25 @@ var socket = io('/chatroom');
 
 var username = "{{username}}";
 
+socket.emit('add user', username, randomColour, socket.id);
+
 var postMessage = () => {
     event.preventDefault();
-    timeStamp = getTime();
-    socket.emit('chat message', document.getElementById('m').value, username, timeStamp, randomColour);
+    socket.emit('chat message', document.getElementById('m').value);
     document.getElementById('m').value = '';
     return false
 };
 
-socket.on('chat message', (msg, user, msgTime, colour) => {
+var updateScroll = () => {
+    var messages = document.getElementById("messageContainer");
+    messages.scrollTop = messages.scrollHeight;
+};
+
+socket.on('chat message', (msg, user) => {
     if (user === username){
-    message = '<li class="user">';
-    } else {message = '<li>';}
-    //style = `a:link, a:visited, a:hover, a:active { color: #${colour}; text-decoration: none }`
-    message += `<span style="color: #${colour}"><a href=/profile/${user} target="_blank" >` + user + '</a></span> - ' + msgTime + '<br>' + msg + '</li>'
-    document.getElementById('messages').innerHTML += message;
+    msg = msg.replace('<li>', '<li class="user">');
+    }
+    document.getElementById('messages').innerHTML += msg;
     updateScroll();
 });
 // socket.on('new connect', () => {

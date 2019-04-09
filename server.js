@@ -11,6 +11,7 @@ const bcrypt = require('bcrypt-nodejs');
 const port = process.env.PORT || 8080;
 
 var utils = require('./utils');
+var msgs = require('./messages');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -129,37 +130,6 @@ app.post('/signup-form', (req, res)=> {
     });
 });
 
-app.get('/chatroom', (req, res)=> {
-    if (!req.session.user){
-        res.send('You have not logged in.')
-    }else{
-        res.render('chat.hbs', {
-            title: 'Chatlantis',
-            page: 'Log out',
-            link: '/logout',
-            username: `${req.session.user[0].username}`
-        });
-    }
-});
-
-var chat = io.of('/chatroom');
-chat.on('connection', (socket) => {
-    // user = socket.request.cookies.name;
-    // console.log(socket.request.cookies.name);
-    // io.emit('new connect');
-    socket.on('disconnect', () => {
-    //   io.emit('disconnect');
-        console.log('User disconnected :(');
-    });
-    console.log('User connected!');
-    socket.on('chat message', (msg, user, time, colour) => {
-        // console.log(req.session.user);
-        msg = msg.replace(/</gi, ""); //basic sanitization
-        msg = msg.replace(/>/gi, "");
-        chat.emit('chat message', msg, user, time, colour);
-    });
-});
-
 app.get('/logout', (req, res)=> {
     req.session.destroy();
     res.send("You've logged out.")
@@ -178,6 +148,49 @@ app.get('/profile/:username', function(req, res) {
             });
         }
 
+    });
+});
+
+app.get('/chatroom', (req, res)=> {
+    if (!req.session.user){
+        res.send('You have not logged in.')
+    }else{
+        res.render('chat.hbs', {
+            title: 'Chatlantis',
+            page: 'Log out',
+            link: '/logout',
+            username: `${req.session.user[0].username}`
+        });
+    }
+});
+
+var chat = io.of('/chatroom');
+chat.on('connection', (socket) => {
+    console.log('User connected!');
+    socket.hasName = false;
+    // io.emit('new connect');
+    socket.on('disconnect', () => {
+    //   io.emit('disconnect');
+        console.log('User disconnected :(');
+    });
+
+    socket.on('add user', (user, colour) => {
+        if (!socket.hasName) {
+            socket.username = user;
+            socket.colour = colour;
+            socket.hasName = true;
+        };
+    });
+
+    socket.on('chat message', (msg) => {
+        // console.log(req.session.user);
+        time = msgs.getTime();
+        try {
+            msg = msgs.createMessage(msg, socket.username, time, socket.colour);
+        } catch (err) {
+            msg = msgs.createMessage(err.message, socket.username, time, socket.colour);
+        }
+        chat.emit('chat message', msg, socket.username);
     });
 });
 
