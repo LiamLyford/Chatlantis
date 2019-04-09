@@ -27,12 +27,4 @@ socket.on('chat message', (msg, user) => {
     document.getElementById('messages').innerHTML += msg;
     updateScroll();
 });
-socket.on('new connect', (user, colour) => {
-    message = `<li><span style="color: #${colour}">` + user + '</span> connected!' + '</li>';
-    document.getElementById('messages').innerHTML += message;
-});
-socket.on('disconnect', (user, colour) => {
-    message = `<li><span style="color: #${colour}">` + user + '</span> disconnected :(' + '</li>';
-    document.getElementById('messages').innerHTML += message;
-});
 </script>

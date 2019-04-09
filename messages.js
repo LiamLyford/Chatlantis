@@ -1,12 +1,14 @@
 var getTime = () => {
     time = new Date();
+    date = time.toDateString();
+    date = date.slice(4).replace(/\ /ig, "/");
     hours = time.getHours();
     minutes = time.getMinutes();
     ampm = (hours >= 12 ? "pm" : "am")
     if (hours > 12){hours -= 12;} 
         else if (hours === 0) {hours = 12;}
     if (minutes < 10) {minutes = "0" + minutes}
-    return  (hours + ":" + minutes + ampm)
+    return  (date + ', ' + hours + ":" + minutes + ampm)
 };
 
 var encodeMessage = (msg) => {
@@ -25,7 +27,7 @@ var createMessage = (msg, user, msgTime, colour) => {
     if (msg === "") {
         throw new Error("*** I tried to hack the server ***");
     }
-    output = `<li><span style="color: #${colour}"><a href=/profile/${user} target="_blank" >` + user + '</a></span> - ' + msgTime + '<br>' + '<span>' + msg + '</span></li>';
+    output = `<li><span style="color: #${colour}"><a href=/profile/${user} target="_blank" >` + user + '</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgTime + '</span><br>' + '<span>' + msg + '</span></li>';
     return output
 }
 
