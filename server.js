@@ -165,6 +165,17 @@ app.get('/chatroom', (req, res)=> {
 
 var chatLog = [];
 const MAXLOGS = 100;
+var logMessage = (user, msg) => {
+    newLog = {
+        user: user,
+        msg: msg
+    }
+    chatLog.push(newLog);
+    if (chatLog.length >= MAXLOGS) {
+        chatLog.shift()
+    }
+}
+
 var chat = io.of('/chatroom');
 chat.on('connection', (socket) => {
     socket.hasName = false;
@@ -177,7 +188,7 @@ chat.on('connection', (socket) => {
             for (i = 0; i < chatLog.length; i++){
                 socket.emit('chat message', chatLog[i].msg, chatLog[i].user);
             }
-            msg = `<li><span style="color: #${socket.colour}">` + socket.username + '</span> <span style="font-size: 85%; color: darkgrey">connected!</span></li>';
+            msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">connected!</span></li>';
             logMessage("", msg);
             chat.emit('chat message', msg, "");
         };
@@ -195,22 +206,11 @@ chat.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        msg = `<li><span style="color: #${socket.colour}">` + socket.username + '</span> <span style="font-size: 85%; color: darkgrey">disconnected :(</span></li>';
+        msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">disconnected :(</span></li>';
         logMessage("", msg);
         chat.emit('chat message', msg, "");
     });
 });
-
-var logMessage = (user, msg) => {
-    newLog = {
-        user: user,
-        msg: msg
-    }
-    chatLog.push(newLog);
-    if (chatLog.length >= MAXLOGS) {
-        chatLog.shift()
-    }
-}
 
 http.listen(port, ()=>{
     console.log('Server is up on the port 8080');
