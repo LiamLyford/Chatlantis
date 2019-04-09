@@ -3,27 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    {{> bootstrap}}
+    {{> Style}}
+
 </head>
-<body>
-    <h1>{{h1}}</h1>
-    <form action="/signup-form" method="post">
-            <label for={{box1}}>{{box1}}:</label>
-            <input type="text" id={{box1}} name={{box1}} placeholder="Enter your username" required/>
+<body class="background">
+<nav class="navbar navbar-expand-lg navbar-light background">
+    <a class="navbar-brand" style="font-family: 'Amatic SC', cursive; font-size: 25px; font-weight: bolder" href="#">CHATLANTIS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <label for={{box2}}>{{box2}}:</label>
-            <input type="text" id={{box2}} name={{box2}} placeholder="Enter your first name" required/>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+            <li class="nav-item ">
+                <a class="nav-link" href="{{pages.[1]}}" role="button">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{{pages.[0]}}">Log In </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link " href="#" role="button">Sign Up <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-            <label for={{box3}}>{{box3}}:</label>
-            <input type="text" id={{box3}} name={{box3}} placeholder="Enter your last name" required/>
-            {{!-- {{name field for object}} --}}
-            <label for={{box4}}>{{box4}}:</label>
-            <input type="password" id={{box4}} name={{box4}} placeholder="Enter your password" required/>
 
-            <label for={{box5}}>{{box5}}:</label>
-            <input type="email" id={{box5}} name={{box5}} placeholder="Enter your email" required/>
+<form action="/login-form" method="post" class="LogColor container-fluid" style="margin-bottom: 80px">
+    <a class="font3" >Sign Up </a>
+    <hr style="border: black solid 1px">
+    <div class="form-group margin2" >
+        <label class="font2">Username: </label>
+        <input type="text" class="form-control" name="{{box1}}" id="{{box1}}" placeholder="Enter Username" required />
 
-            <input type="submit" value="Sign up" />
-    </form>
+    </div>
+    <div class="form-group margin2">
+        <label class="font2">First Name: </label>
+        <input type="text" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="Enter your first name" required/>
+    </div>
+    <div class="form-group margin2">
+        <label class="font2">Last Name: </label>
+        <input type="text" class="form-control" name="{{box3}}" id="{{box3}}" placeholder="Password" required/>
+    </div>
+    <div class="form-group margin2">
+        <label class="font2">Password: </label>
+        <input type="password" class="form-control" name="{{box4}}" id="{{box4}}" placeholder="Password" required/>
+    </div>
+    <div class="form-group margin2">
+        <label class="font2">E-mail: </label>
+        <input type="email" class="form-control" name="{{box5}}" id="{{box5}}" placeholder="Password" required/>
+    </div>
+
+    <button type="submit" class="btn btn-primary" value="sign up" style="margin: 22px">Submit</button>
+</form>
+    <!--<form action="/signup-form" method="post">-->
+            <!--<label for={{box1}}>{{box1}}:</label>-->
+            <!--<input type="text" id={{box1}} name={{box1}} placeholder="Enter your username" required/>-->
+
+            <!--<label for={{box2}}>{{box2}}:</label>-->
+            <!--<input type="text" id={{box2}} name={{box2}} placeholder="Enter your first name" required/>-->
+
+            <!--<label for={{box3}}>{{box3}}:</label>-->
+            <!--<input type="text" id={{box3}} name={{box3}} placeholder="Enter your last name" required/>-->
+            <!--{{!-- {{name field for object}} --}}-->
+            <!--<label for={{box4}}>{{box4}}:</label>-->
+            <!--<input type="password" id={{box4}} name={{box4}} placeholder="Enter your password" required/>-->
+
+            <!--<label for={{box5}}>{{box5}}:</label>-->
+            <!--<input type="email" id={{box5}} name={{box5}} placeholder="Enter your email" required/>-->
+
+            <!--<input type="submit" value="Sign up" />-->
+    <!--</form>-->
 </body>
 {{> footer}}
 </html>

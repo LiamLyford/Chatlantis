@@ -92,7 +92,8 @@ app.get('/signup', (req, res)=> {
         box2: 'first_name',
         box3: 'last_name',
         box4: 'password',
-        box5: 'email'
+        box5: 'email',
+        pages: ['/login',  '/']
     });
 });
 
