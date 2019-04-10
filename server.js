@@ -1,11 +1,11 @@
-const express = require('express');
 // const path = require('path');
 // const favicon = require('serve-favicon');
 // const logger = require('morgan');
+// const passport = require('passport');
+const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-// const passport = require('passport');
 const hbs = require('hbs');
 const bcrypt = require('bcrypt-nodejs');
 const port = process.env.PORT || 8080;
@@ -49,7 +49,21 @@ app.get('/login', (req, res)=> {
         h1: 'Login',
         box1: 'username',
         box2: 'password',
-        pages: ['/signup',  '/']
+        pages: ['/signup',  '/'],
+        isError: 'false',
+        error: ''
+    });
+});
+
+app.get('/login/incorrect', (req, res)=> {
+    res.render('login.hbs', {
+        title: 'Login',
+        h1: 'Login',
+        box1: 'username',
+        box2: 'password',
+        pages: ['/signup',  '/'],
+        isError: 'true',
+        error: 'Incorrect login information.'
     });
 });
 
@@ -64,7 +78,7 @@ app.post('/login-form', (req, res)=> {
             res.send('Unable to find user.');
         }
         if (user.length == 0){
-            res.send('Username does not exist.');
+            res.redirect('/login/incorrect');
         }else{
             // console.log(typeof password);
             // console.log(user[0].hash);
@@ -72,7 +86,7 @@ app.post('/login-form', (req, res)=> {
                 req.session.user = user;
                 res.redirect('/chatroom');
             }else{
-                res.send('Incorrect password.')
+                res.redirect('/login/incorrect');
             }
 
         }
@@ -90,7 +104,24 @@ app.get('/signup', (req, res)=> {
         box3: 'last_name',
         box4: 'password',
         box5: 'email',
-        pages: ['/login',  '/']
+        pages: ['/login',  '/'],
+        isError: 'false',
+        error: ''
+    });
+});
+
+app.get('/signup/exists', (req, res)=> {
+    res.render('signup.hbs', {
+        title: 'Sign up',
+        h1: 'Sign up',
+        box1: 'username',
+        box2: 'first_name',
+        box3: 'last_name',
+        box4: 'password',
+        box5: 'email',
+        pages: ['/login',  '/'],
+        isError: 'true',
+        error: 'User already exists.'
     });
 });
 
@@ -122,7 +153,7 @@ app.post('/signup-form', (req, res)=> {
             // res.send(req.body);
             res.redirect('/login');
         }else{
-            res.send('User already exists.');
+            res.redirect('/signup/exists');
         }
 
     });

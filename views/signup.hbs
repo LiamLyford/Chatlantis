@@ -5,7 +5,11 @@
     <title>{{title}}</title>
     {{> bootstrap}}
     {{> Style}}
-
+    <script>
+        if ({{isError}}) {
+            alert("{{error}}")
+        }
+    </script>
 </head>
 <body class="background">
 <nav class="navbar navbar-expand-lg navbar-light background">
