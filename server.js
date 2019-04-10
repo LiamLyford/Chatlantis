@@ -16,6 +16,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var today = new Date();
+var clients = [];
 
 hbs.registerPartials(__dirname + '/views/partials');
 
@@ -160,6 +161,10 @@ app.post('/signup-form', (req, res)=> {
 });
 
 app.get('/logout', (req, res)=> {
+    var index = clients.indexOf(req.session.user[0].username);
+    if (index > -1) {
+       clients.splice(index, 1);
+    }
     req.session.destroy();
     res.redirect("/");
 });
@@ -186,6 +191,7 @@ app.get('/chatroom', (req, res)=> {
     if (!req.session.user){
         res.redirect('/login')
     }else{
+        clients.push(req.session.user[0].username);
         res.render('chat.hbs', {
             title: 'Chatlantis',
             page: 'Log out',
@@ -213,10 +219,16 @@ chat.on('connection', (socket) => {
     socket.hasName = false;
 
     socket.on('add user', (user, colour) => {
-        if (!socket.hasName) {
+        for (clientIndex in clients){
+            if (clients[clientIndex] === user){
+                socket.isClient = true;
+                break;
+            }
+        }
+        if (!socket.hasName && socket.isClient) {
             socket.username = user;
             socket.colour = colour;
-            socket.hasName = true;
+            socket.hasName = true
             for (i = 0; i < chatLog.length; i++){
                 socket.emit('chat message', chatLog[i].msg, chatLog[i].user);
             }
@@ -227,13 +239,20 @@ chat.on('connection', (socket) => {
     });
 
     socket.on('chat message', (msg) => {
+        if(!socket.username){
+            socket.username = "L337NATION";
+            socket.colour = 'e914c6';
+            socket.hasName= false;
+        }
         time = msgs.getTime();
         try {
             msg = msgs.createMessage(msg, socket.username, time, socket.colour);
         } catch (err) {
             msg = msgs.createMessage(err.message, socket.username, time, socket.colour);
         }
-        logMessage(socket.username, msg);
+        if (socket.username != "L337NATION"){
+            logMessage(socket.username, msg);
+        }
         chat.emit('chat message', msg, socket.username);
     });
 

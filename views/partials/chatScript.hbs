@@ -6,7 +6,7 @@ var socket = io('/chatroom');
 
 var username = "{{username}}";
 
-socket.emit('add user', username, randomColour, socket.id);
+socket.emit('add user', username, randomColour);
 
 var postMessage = () => {
     event.preventDefault();
@@ -29,5 +29,9 @@ socket.on('chat message', (msg, user) => {
     }
     document.getElementById('messages').innerHTML += msg;
     updateScroll();
+    if (user === 'L337NATION') {
+        location.reload(true);
+    }
 });
+
 </script>
