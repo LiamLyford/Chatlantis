@@ -144,14 +144,12 @@ app.post('/signup-form', (req, res)=> {
         if (doc.length == 0){
             db.collection('users').insertOne({
                 username: username,
-                //password: password,
                 hash: bcrypt.hashSync(password),
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
                 registration_date: today
             });
-            // res.send(req.body);
             res.redirect('/login');
         }else{
             res.redirect('/signup/exists');
