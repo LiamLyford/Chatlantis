@@ -199,17 +199,25 @@ app.get('/chatroom', (req, res)=> {
     }
 });
 
-var chatLog = [];
-const MAXLOGS = 100;
+var chatLog = []
+const MAXLOGS = 200;
 var logMessage = (user, msg) => {
-    newLog = {
-        user: user,
-        msg: msg
-    }
-    chatLog.push(newLog);
-    if (chatLog.length >= MAXLOGS) {
-        chatLog.shift()
-    }
+    var db = utils.getDb();
+    db.collection('log').insertOne({
+            user: user,
+            msg: msg
+    })
+    db.collection('log').find({}).toArray(function(err,log){
+        if (err){
+            res.send('Problem loading chat log.');
+        }else{
+            if (log.length >= MAXLOGS) {
+                db.collection('log').deleteOne();
+                log.shift();
+            }
+            chatLog = log;
+        }
+    });
 }
 
 var chat = io.of('/chatroom');
