@@ -27,7 +27,7 @@ var createMessage = (msg, user, msgTime, colour) => {
     if (msg === "") {
         throw new Error("*** I tried to hack the server ***");
     }
-    output = `<li><span style="color: #${colour}"><a href=/profile/${user} target="_blank" >` + user + '</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgTime + '</span><br>' + '<span>' + msg + '</span></li>';
+    output = `<li><span style="color: #${colour}"><a href=/profile/${user} target="_blank" >` + user + '</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgTime + '</span><br><span>' + msg + '</span></li>';
     return output
 }
 
