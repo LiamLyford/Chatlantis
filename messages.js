@@ -11,7 +11,7 @@ var getTime = () => {
     return  (date + ', ' + hours + ":" + minutes + ampm)
 };
 
-var encodeMessage = (msg) => {
+var stripMessage = (msg) => {
     // msg = msg.replace(/</gi, "&lt;");
     // msg = msg.replace(/>/gi, "&gt;");
     // msg = msg.replace(/&/gi, "&amp;");
@@ -23,7 +23,7 @@ var encodeMessage = (msg) => {
 }
 
 var createMessage = (msg, user, msgTime, colour) => {
-    msg = encodeMessage(msg);
+    msg = stripMessage(msg);
     if (msg === "") {
         throw new Error("*** I tried to hack the server ***");
     }
