@@ -170,7 +170,7 @@ app.get('/logout', (req, res)=> {
 app.get('/profile/:username', function(req, res) {
     var db = utils.getDb();
     db.collection('users').find({username: req.params.username}).toArray(function(err,user){
-        if (err){
+        if (err || !(user[0])){
             res.send('User does not exist.');
         }else{
             res.render('profile.hbs', {
