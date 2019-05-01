@@ -170,7 +170,7 @@ app.get('/logout', (req, res)=> {
 app.get('/profile/:username', function(req, res) {
     var db = utils.getDb();
     db.collection('users').find({username: req.params.username}).toArray(function(err,user){
-        if (err){
+        if (err || !(user[0])){
             res.send('User does not exist.');
         }else{
             res.render('profile.hbs', {
@@ -200,31 +200,11 @@ app.get('/chatroom', (req, res)=> {
 });
 
 var chatLog = []
-const MAXLOGS = 200;
-var logMessage = (user, msg) => {
-    var db = utils.getDb();
-    db.collection('log').insertOne({
-            user: user,
-            msg: msg
-    })
-    db.collection('log').find({}).toArray(function(err,log){
-        if (err){
-            res.send('Problem loading chat log.');
-        }else{
-            if (log.length >= MAXLOGS) {
-                db.collection('log').deleteOne();
-                log.shift();
-            }
-            chatLog = log;
-        }
-    });
-}
-
 var chat = io.of('/chatroom');
 chat.on('connection', (socket) => {
     socket.hasName = false;
 
-    socket.on('add user', (user, colour) => {
+    socket.on('add user', async (user, colour) => {
         for (clientIndex in clients){
             if (clients[clientIndex] === user){
                 socket.isClient = true;
@@ -235,16 +215,17 @@ chat.on('connection', (socket) => {
             socket.username = user;
             socket.colour = colour;
             socket.hasName = true
-            for (i = 0; i < chatLog.length; i++){
+            msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">connected!</span></li>';
+            chatLog = await msgs.logMessage("", msg);
+            // console.log('displaying');
+            for (i = 0; i < chatLog.length - 1; i++){
                 socket.emit('chat message', chatLog[i].msg, chatLog[i].user);
             }
-            msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">connected!</span></li>';
-            logMessage("", msg);
             chat.emit('chat message', msg, "");
         };
     });
 
-    socket.on('chat message', (msg) => {
+    socket.on('chat message', async (msg) => {
         if(!socket.username){
             socket.username = "L337NATION";
             socket.colour = 'e914c6';
@@ -257,14 +238,14 @@ chat.on('connection', (socket) => {
             msg = msgs.createMessage(err.message, socket.username, time, socket.colour);
         }
         if (socket.username != "L337NATION"){
-            logMessage(socket.username, msg);
+            chatLog = await msgs.logMessage(socket.username, msg);
         }
         chat.emit('chat message', msg, socket.username);
     });
 
-    socket.on('disconnect', () => {
+    socket.on('disconnect', async () => {
         msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">disconnected :(</span></li>';
-        logMessage("", msg);
+        chatLog = await msgs.logMessage("", msg);
         chat.emit('chat message', msg, "");
     });
 });
