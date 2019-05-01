@@ -11,6 +11,7 @@ var getTime = () => {
     return  (date + ', ' + hours + ":" + minutes + ampm)
 };
 
+
 var stripMessage = (msg) => {
     // msg = msg.replace(/</gi, "&lt;");
     // msg = msg.replace(/>/gi, "&gt;");

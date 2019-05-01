@@ -2,16 +2,21 @@
 
 
 	.background {
-		background-color: #b3d7ff;
+		background-image: url("http://localhost:8080/static/images/background.jpeg");
+		background-size:100%;
 	}
 
 	.backgroundColor {
-		background-color: #b3d7ff;
+		background-color: white;
+		opacity: 0.8;
 
 	}
 
 	.margin1 {
-		margin: 200px 50px 75px;
+		margin-top: 200px;
+		width: 900px;
+		margin-left: auto;
+		margin-right:auto;
 		padding-bottom: 150px;
 	}
 
@@ -50,7 +55,9 @@
 		margin: 30px;
 		text-align: center;
 	}
-
+	.font1{
+		font-family: 'Aquawax Black';
+	}
 	.font2 {
 		font-family: "Comic Sans MS";
 	}
@@ -73,15 +80,12 @@
 
 	@font-face {
 		font-family: 'Aquawax Black';
-		src: url('/fonts/aquawax-blacktrial-webfont.eot');
-		src: url('/fonts/aquawax-blacktrial-webfont.eot?#iefix') format('embedded-opentype'),
-		url('/fonts/aquawax-blacktrial-webfont.woff2') format('woff2'),
-		url('/fonts/aquawax-blacktrial-webfont.woff') format('woff'),
-		url('/fonts/aquawax-blacktrial-webfont.ttf') format('truetype'),
-		url('/fonts/aquawax-blacktrial-webfont.svg#aquawax-blacktrialregular') format('svg');
-		font-weight: normal;
-		font-style: normal;
-
+		src: url('http://localhost:8080/static/fonts/aquawax-blacktrial-webfont.eot');
+		src: url('http://localhost:8080/static/fonts/aquawax-blacktrial-webfont.eot?#iefix') format('embedded-opentype'),
+		url('http://localhost:8080/static/fonts/aquawax-blacktrial-webfont.woff2') format('woff2'),
+		url('http://localhost:8080/static/fonts/aquawax-blacktrial-webfont.woff') format('woff'),
+		url('http://localhost:8080/static/fonts/aquawax-blacktrial-webfont.ttf') format('truetype'),
+		url('http://localhost:8080/static/fonts/aquawax-blacktrial-webfont.svg#aquawax-blacktrialregular') format('svg');
 	}
 
 </style>

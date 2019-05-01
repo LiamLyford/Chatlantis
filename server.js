@@ -10,6 +10,7 @@ const hbs = require('hbs');
 const bcrypt = require('bcrypt-nodejs');
 const port = process.env.PORT || 8080;
 
+
 var utils = require('./utils');
 var msgs = require('./messages');
 var app = express();
@@ -29,7 +30,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }));
-
+app.use('/static', express.static('public'));
 hbs.registerHelper('getCurrentYear', ()=>{
     return today.getFullYear();
 });
