@@ -1,3 +1,5 @@
+var utils = require('./utils');
+
 var getTime = () => {
     time = new Date();
     date = time.toDateString();
@@ -31,7 +33,35 @@ var createMessage = (msg, user, msgTime, colour) => {
     return output
 }
 
+const MAXLOGS = 200;
+var logMessage = (user, msg) => {
+    return new Promise((resolve) => {
+        var db = utils.getDb();
+        db.collection('log').insertOne({
+                user: user,
+                msg: msg
+        })
+        db.collection('log').find({}).toArray(function(err,log){
+            if (err){
+                res.send('Problem loading chat log.');
+                resolve({
+                    user: 'server',
+                    msg: 'Problem loading chat log.'
+            });
+            }else{
+                if (log.length >= MAXLOGS) {
+                    db.collection('log').deleteOne();
+                    log.shift();
+                }
+                // console.log('logging');
+                resolve(log)
+            }
+        });
+    });
+}
+
 module.exports = {
     createMessage,
+    logMessage,
     getTime
 }
