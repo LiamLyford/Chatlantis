@@ -203,7 +203,7 @@ var chatLog = []
 var chat = io.of('/chatroom');
 chat.on('connection', (socket) => {
     socket.hasName = false;
-
+    
     socket.on('add user', async (user, colour) => {
         for (clientIndex in clients){
             if (clients[clientIndex] === user){
