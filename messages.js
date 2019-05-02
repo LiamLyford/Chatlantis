@@ -1,3 +1,4 @@
+const emoji = require('node-emoji')
 var utils = require('./utils');
 
 var getTime = () => {
@@ -26,6 +27,9 @@ var stripMessage = (msg) => {
 
 var createMessage = (msg, user, msgTime, colour) => {
     msg = stripMessage(msg);
+    msg = emoji.emojify(msg);
+    // console.log('creating message');
+    // console.log(msg);
     if (msg === "") {
         throw new Error("*** I tried to hack the server ***");
     }
@@ -59,6 +63,8 @@ var logMessage = (user, msg) => {
         });
     });
 }
+
+// console.log(emoji.emojify(':pizza:'))
 
 module.exports = {
     createMessage,
