@@ -1,9 +1,10 @@
 const assert = require('chai').assert;
+var utils = require('../utils');
 const msgs = require('../messages');
 
 describe('Messages', () => {
     describe('createMessage()', () => {
-        it('createMessage should be wrap a message in html', () => {
+        it('createMessage should wrap a message in html', () => {
             output = '<li><span style="color: #FFFFFF"><a href=/profile/${user} target="_blank" >Jimmy</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgs.getTime() + '</span><br><span>Hello</span></li>';        
             result = msgs.createMessage('Hello', 'Jimmy', msgs.getTime(), 'FFFFFF')
             assert.equal(result, output);
@@ -26,5 +27,32 @@ describe('Messages', () => {
             assert.typeOf(msgs.getTime(), 'string');
         })
     })
+
+    describe('logMessage()', () => {
+        it("logMessage should return an array", async () => {
+            utils.init();
+            await sleep();
+            db = utils.getDb();
+            testMsg = msgs.createMessage('test', 'test', 'test', 'F77777');
+            result = await msgs.logMessage('test', testMsg);
+            // db.collection('log').deleteOne({username: 'test'});
+            utils.close();
+            assert.typeOf(result, 'array');
+        })
+        it("logMessage should add a message to the end of the array", async () => {
+            utils.init();
+            await sleep();
+            db = utils.getDb();
+            testMsg = msgs.createMessage('test', 'test', 'test', 'F77777');
+            result = await msgs.logMessage('test', testMsg);
+            // db.collection('log').deleteOne({username: 'test'});
+            utils.close();
+            assert.equal(result[result.length-1].msg, testMsg)
+        })
+    })
     
 })
+
+function sleep() {
+    return new Promise(resolve => setTimeout(resolve, 1000));
+  }
