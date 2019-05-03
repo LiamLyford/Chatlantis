@@ -27,7 +27,7 @@ var stripMessage = (msg) => {
 
 var createMessage = (msg, user, msgTime, colour) => {
     msg = stripMessage(msg);
-    msg = emoji.emojify(msg);
+    // msg = emoji.emojify(msg);
     // console.log('creating message');
     // console.log(msg);
     if (msg === "") {
