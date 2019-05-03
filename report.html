@@ -427,15 +427,15 @@ body {
                     <li class="passes">passes: <em>6</em></li>
                     <li class="pending">pending: <em>0</em></li>
                     <li class="failures">failures: <em>0</em></li>
-                    <li class="duration">duration: <em>2.4s</em></li>
+                    <li class="duration">duration: <em>2.5s</em></li>
                 </ul>
             </div>
-            <ul id="report"><li class="suite"><h1>Messages</h1><ul><li class="suite"><h1>createMessage()</h1><ul><li class="test pass fast"><h2>createMessage should wrap a message in html<span class="duration">2ms</span></h2><pre><code>output = &#x27;&#x3C;li&#x3E;&#x3C;span style=&#x22;color: #FFFFFF&#x22;&#x3E;&#x3C;a href=/profile/${user} target=&#x22;_blank&#x22; &#x3E;Jimmy&#x3C;/a&#x3E;&#x3C;/span&#x3E; &#x3C;span style=&#x22;font-size: 85%; color: darkgrey&#x22;&#x3E;- &#x27; + msgs.getTime() + &#x27;&#x3C;/span&#x3E;&#x3C;br&#x3E;&#x3C;span&#x3E;Hello&#x3C;/span&#x3E;&#x3C;/li&#x3E;&#x27;;        
+            <ul id="report"><li class="suite"><h1>Messages</h1><ul><li class="suite"><h1>createMessage()</h1><ul><li class="test pass fast"><h2>createMessage should wrap a message in html<span class="duration">3ms</span></h2><pre><code>output = &#x27;&#x3C;li&#x3E;&#x3C;span style=&#x22;color: #FFFFFF&#x22;&#x3E;&#x3C;a href=/profile/${user} target=&#x22;_blank&#x22; &#x3E;Jimmy&#x3C;/a&#x3E;&#x3C;/span&#x3E; &#x3C;span style=&#x22;font-size: 85%; color: darkgrey&#x22;&#x3E;- &#x27; + msgs.getTime() + &#x27;&#x3C;/span&#x3E;&#x3C;br&#x3E;&#x3C;span&#x3E;Hello&#x3C;/span&#x3E;&#x3C;/li&#x3E;&#x27;;        
 result = msgs.createMessage(&#x27;Hello&#x27;, &#x27;Jimmy&#x27;, msgs.getTime(), &#x27;FFFFFF&#x27;)
 assert.equal(result, output);</code></pre></li><li class="test pass fast"><h2>createMessage should output a string<span class="duration">1ms</span></h2><pre><code>result = msgs.createMessage(&#x27;Hello&#x27;, &#x27;Jimmy&#x27;, msgs.getTime(), &#x27;FFFFFF&#x27;)
-assert.typeOf(result, &#x27;string&#x27;);</code></pre></li><li class="test pass fast"><h2>createMessage should throw an error if message is empty<span class="duration">0ms</span></h2><pre><code>assert.throws(() =&#x3E; {
+assert.typeOf(result, &#x27;string&#x27;);</code></pre></li><li class="test pass fast"><h2>createMessage should throw an error if message is empty<span class="duration">1ms</span></h2><pre><code>assert.throws(() =&#x3E; {
     msgs.createMessage(&#x22;&#x22;, &#x27;Jimmy&#x27;, msgs.getTime(), &#x27;FFFFFF&#x27;)
-});</code></pre></li></ul></li><li class="suite"><h1>getTime()</h1><ul><li class="test pass fast"><h2>getTime should return a string<span class="duration">0ms</span></h2><pre><code>assert.typeOf(msgs.getTime(), &#x27;string&#x27;);</code></pre></li></ul></li><li class="suite"><h1>logMessage()</h1><ul><li class="test pass slow"><h2>logMessage should return an array<span class="duration">1220ms</span></h2><pre><code>async () =&#x3E; {
+});</code></pre></li></ul></li><li class="suite"><h1>getTime()</h1><ul><li class="test pass fast"><h2>getTime should return a string<span class="duration">0ms</span></h2><pre><code>assert.typeOf(msgs.getTime(), &#x27;string&#x27;);</code></pre></li></ul></li><li class="suite"><h1>logMessage()</h1><ul><li class="test pass slow"><h2>logMessage should return an array<span class="duration">1243ms</span></h2><pre><code>async () =&#x3E; {
             utils.init();
             await sleep();
             db = utils.getDb();
@@ -444,7 +444,7 @@ assert.typeOf(result, &#x27;string&#x27;);</code></pre></li><li class="test pass
             // db.collection(&#x27;log&#x27;).deleteOne({username: &#x27;test&#x27;});
             utils.close();
             assert.typeOf(result, &#x27;array&#x27;);
-        }</code></pre></li><li class="test pass slow"><h2>logMessage should add a message to the end of the array<span class="duration">1187ms</span></h2><pre><code>async () =&#x3E; {
+        }</code></pre></li><li class="test pass slow"><h2>logMessage should add a message to the end of the array<span class="duration">1198ms</span></h2><pre><code>async () =&#x3E; {
             utils.init();
             await sleep();
             db = utils.getDb();
@@ -452,7 +452,7 @@ assert.typeOf(result, &#x27;string&#x27;);</code></pre></li><li class="test pass
             result = await msgs.logMessage(&#x27;test&#x27;, testMsg);
             // db.collection(&#x27;log&#x27;).deleteOne({username: &#x27;test&#x27;});
             utils.close();
-            assert.equal(result[198].msg, testMsg)
+            assert.equal(result[result.length-1].msg, testMsg)
         }</code></pre></li></ul></li></ul></li></ul>
         </div>
         <script>

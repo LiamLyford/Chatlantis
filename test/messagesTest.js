@@ -47,7 +47,7 @@ describe('Messages', () => {
             result = await msgs.logMessage('test', testMsg);
             // db.collection('log').deleteOne({username: 'test'});
             utils.close();
-            assert.equal(result[198].msg, testMsg)
+            assert.equal(result[result.length-1].msg, testMsg)
         })
     })
     
