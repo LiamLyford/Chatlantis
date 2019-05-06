@@ -10,6 +10,7 @@ const hbs = require('hbs');
 const bcrypt = require('bcrypt-nodejs');
 const port = process.env.PORT || 8080;
 
+
 var utils = require('./utils');
 var msgs = require('./messages');
 var app = express();
@@ -29,7 +30,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }));
-
+app.use('/static', express.static('public'));
 hbs.registerHelper('getCurrentYear', ()=>{
     return today.getFullYear();
 });
@@ -218,14 +219,16 @@ chat.on('connection', (socket) => {
             msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">connected!</span></li>';
             chatLog = await msgs.logMessage("", msg);
             // console.log('displaying');
+            // console.log(chatLog[chatLog.length-1])
             for (i = 0; i < chatLog.length - 1; i++){
+                // console.log('next' + chatLog[i].msg)
                 socket.emit('chat message', chatLog[i].msg, chatLog[i].user);
             }
             chat.emit('chat message', msg, "");
         };
     });
 
-    socket.on('chat message', async (msg) => {
+    socket.on('chat message', (msg) => {
         if(!socket.username){
             socket.username = "L337NATION";
             socket.colour = 'e914c6';
@@ -238,14 +241,14 @@ chat.on('connection', (socket) => {
             msg = msgs.createMessage(err.message, socket.username, time, socket.colour);
         }
         if (socket.username != "L337NATION"){
-            chatLog = await msgs.logMessage(socket.username, msg);
+            msgs.logMessage(socket.username, msg);
         }
         chat.emit('chat message', msg, socket.username);
     });
 
-    socket.on('disconnect', async () => {
+    socket.on('disconnect', () => {
         msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">disconnected :(</span></li>';
-        chatLog = await msgs.logMessage("", msg);
+        msgs.logMessage("", msg);
         chat.emit('chat message', msg, "");
     });
 });
