@@ -44,7 +44,18 @@ var showPicker = () => {
 }
 
 var paste = (emoji) => {
-    document.getElementById('m').value += emoji;
+    var input = document.getElementById('m');
+    input.value += emoji;
+    input.focus();
 }
+
+// Detect all clicks on the document
+document.addEventListener("click", function(event) {
+	// If user clicks inside the element or on the button, do nothing
+	if (event.target.closest("#emojiPicker") || event.target.closest(".emojiButton")) return;
+
+	// If user clicks outside the element, hide it!
+	document.getElementById("emojiPicker").style.display = "none";
+});
 
 </script>
