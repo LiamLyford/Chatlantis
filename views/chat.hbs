@@ -6,10 +6,11 @@
     {{> Style}}
     {{> chatStyle}}
     <script src="/socket.io/socket.io.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body class="background">
     <nav class="navbar navbar-expand-lg navbar-light background">
-      <a class="navbar-brand" style="font-family: 'Amatic SC', cursive; font-size: 25px; font-weight: bolder">CHATLANTIS</a>
+      <a class="navbar-brand font1" style="font-size: 30px; font-weight: bolder; color: rgba(255,255,255,0.95)">CHATLANTIS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -17,7 +18,7 @@
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
               <li class="nav-item ">
-                  <a class="nav-link" role="button" href={{link}}>Log out</a>
+                  <a class="nav-link button1" role="button" href={{link}}>Log out</a>
               </li>
           </ul>
       </div>
@@ -30,8 +31,22 @@
         </div>
         <div>
           <form id="f" action="" onsubmit='postMessage()'>
-            <input id="m" autocomplete="off" maxlength="200" placeholder="Type something..." autofocus/><button>Send</button>
+            <input id="m" autocomplete="off" maxlength="200"  placeholder="Type something..." autofocus/>
+            <button class = "button1">Send</button>
           </form>
+          <button class = "emojiButton" onclick="showPicker()">emojis?</button>
+          <div id="emojiPicker">
+              <span class = "emoji" onclick="paste(':grinning:')">😀</span><span class = "emoji" onclick="paste(':smiley:')">😃</span><span class = "emoji" onclick="paste(':smile:')">😄</span><span class = "emoji" onclick="paste(':grin:')">😁</span><span class = "emoji" onclick="paste(':laughing:')">😆</span><span class = "emoji" onclick="paste(':sweat_smile:')">😅</span><span class = "emoji" onclick="paste(':joy:')">😂</span><span class = "emoji" onclick="paste(':yum:')">😋</span><span class = "emoji" onclick="paste(':expressionless:')">😑</span><span class = "emoji" onclick="paste(':sleeping:')">😴</span>
+              <br><span class = "emoji" onclick = "paste(':+1:')">👍</span><span class = "emoji" onclick = "paste(':-1:')">👎</span>
+              <span class = "emoji" onclick = "paste(':v:')">✌</span><span class = "emoji" onclick = "paste(':ok_hand:')">👌</span>
+              <span class = "emoji" onclick = "paste(':wave:')">👋</span><span class = "emoji" onclick = "paste(':muscle:')">💪</span>
+              <span class = "emoji" onclick = "paste(':fist:')">✊</span><span class = "emoji" onclick = "paste(':clap:')">👏</span>
+              <span class = "emoji" onclick = "paste(':pray:')">🙏</span><span class = "emoji" onclick = "paste(':raised_hands:')">🙌</span>
+              <br>
+              <span class = "emoji" onclick="paste(':heart:')">❤</span><span class = "emoji" onclick="paste(':grapes:')">🍇</span><span class = "emoji" onclick="paste(':banana:')">🍌</span><span class = "emoji" onclick="paste(':cheese_wedge:')">🧀</span><span class = "emoji" onclick="paste(':cherries:')">🍒</span><span class = "emoji" onclick="paste(':lemon:')">🍋</span><span class = "emoji" onclick="paste(':peanuts:')">🥜</span><span class = "emoji" onclick="paste(':eggplant:')">🍆</span><span class = "emoji" onclick="paste(':wine_glass:')">🍷</span><span class = "emoji" onclick="paste(':pizza:')">🍕</span><br>
+              <span class = "emoji" onclick="paste(':pie:')">🥧</span><span class = "emoji" onclick="paste(':hotdog:')">🌭</span><span class = "emoji" onclick="paste(':hamburger:')">🍔</span><span class = "emoji" onclick="paste(':taco:')">🌮</span><span class = "emoji" onclick="paste(':dumpling:')">🥟</span><span class = "emoji" onclick="paste(':fried_shrimp:')">🍤</span><span class = "emoji" onclick="paste(':fries:')">🍟</span><span class = "emoji" onclick="paste(':cookie:')">🍪</span><span class = "emoji" onclick="paste(':doughnut:')">🍩</span><span class = "emoji" onclick="paste(':sushi:')">🍣</span><span class = "emoji" onclick="paste(':poultry_leg:')">🍗</span>
+
+          </div>
         </div>
       </div>
     </div>
