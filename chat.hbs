@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    {{> bootstrap}}
+    {{> Style}}
+    {{> chatStyle}}
+    <script src="/socket.io/socket.io.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/lib/css/emoji.css" rel="stylesheet">
+  </head>
+  <body class="background">
+    <nav class="navbar navbar-expand-lg navbar-light background">
+      <a class="navbar-brand font1" style="font-size: 30px; font-weight: bolder; color: rgba(255,255,255,0.95)">CHATLANTIS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto ">
+              <li class="nav-item ">
+                  <a class="nav-link button1" role="button" href={{link}}>Log out</a>
+              </li>
+          </ul>
+      </div>
+    </nav>
+    
+    <div class="messageBoxContainer">
+      <div class="messageBox">
+        <div id='messageContainer'>
+          <ul id="messages"></ul>
+        </div>
+        <div>
+          <form id="f" action="" onsubmit='postMessage()'>
+            <input id="m" autocomplete="off" maxlength="200"  placeholder="Type something..." autofocus/>
+            <button class = "emojiButton" onclick="showPicker()">😃</button>
+            <button class = "button2">Send</button>
+          </form>
+          <div id="emojiPicker"><p onclick="paste(':grinning:')">😀</p></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  {{> footer}}
+  {{> chatScript}}
+</html>

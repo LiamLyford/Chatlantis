@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    {{> bootstrap}}
+    {{> Style}}
+    <script>
+        if ({{isError}}) {
+            alert("{{error}}")
+        }
+    </script>
+</head>
+<body class="background">
+    <nav class="navbar navbar-expand-lg navbar-light background">
+        <a class="navbar-brand font1" style="font-size: 30px; font-weight: bolder; color: rgba(255,255,255,0.95)">CHATLANTIS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link button1" href="{{pages.[1]}}" role="button">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link button1" href="#">Log In <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link button1" href="{{pages.[0]}}" role="button">Sign Up</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+
+        <form action="/login-form" method="post" class="LogColor container-fluid" style="margin-bottom: 80px">
+            <a class="font3" > L O G I N </a>
+            <hr style="border: black solid 1px">
+            <div class="form-group margin2" >
+                <label class="font2">Username: </label>
+                <input type="text" class="form-control" name="{{box1}}" id="{{box1}}" placeholder="Enter Username" required />
+
+            </div>
+            <div class="form-group margin2">
+                <label class="font2">Password: </label>
+                <input type="password" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="Enter Password" required/>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin: 22px">Submit</button>
+        </form>
+
+</body>
+{{> footer}}
+</html>
