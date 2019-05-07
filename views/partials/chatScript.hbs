@@ -34,4 +34,17 @@ socket.on('chat message', (msg, user) => {
     }
 });
 
+var showPicker = () => {
+  var x = document.getElementById("emojiPicker");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+var paste = (emoji) => {
+    document.getElementById('m').value += emoji;
+}
+
 </script>
