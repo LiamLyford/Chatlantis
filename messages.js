@@ -38,7 +38,7 @@ var createMessage = (msg, user, msgTime, colour) => {
     return output
 }
 
-const MAXLOGS = 200;
+const MAXLOGS = 100;
 var logMessage = (user, msg) => {
     return new Promise((resolve) => {
         var db = utils.getDb();

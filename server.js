@@ -248,7 +248,9 @@ chat.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">disconnected :(</span></li>';
-        msgs.logMessage("", msg);
+        if(socket.username){
+            msgs.logMessage("", msg);
+        }
         chat.emit('chat message', msg, "");
     });
 });
