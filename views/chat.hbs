@@ -27,9 +27,11 @@
     <div class="messageBoxContainer">
       <div class="messageBox">
         <div id='messageContainer'>
-          <ul id="messages"></ul>
+          <div id="autocompleteContainer">
+            <ul id="messages"></ul>
+          </div>
         </div>
-        <div>
+        <div class="formContainer" id="formContainer">
           <form id="f" action="" onsubmit='postMessage()'>
             <input id="m" autocomplete="off" maxlength="200"  placeholder="Type something..." autofocus/>
             <button class = "button1">Send</button>
@@ -45,12 +47,15 @@
               <br>
               <span class = "emoji" onclick="paste(':heart:')">❤</span><span class = "emoji" onclick="paste(':grapes:')">🍇</span><span class = "emoji" onclick="paste(':banana:')">🍌</span><span class = "emoji" onclick="paste(':cheese_wedge:')">🧀</span><span class = "emoji" onclick="paste(':cherries:')">🍒</span><span class = "emoji" onclick="paste(':lemon:')">🍋</span><span class = "emoji" onclick="paste(':peanuts:')">🥜</span><span class = "emoji" onclick="paste(':eggplant:')">🍆</span><span class = "emoji" onclick="paste(':wine_glass:')">🍷</span><span class = "emoji" onclick="paste(':pizza:')">🍕</span><br>
               <span class = "emoji" onclick="paste(':pie:')">🥧</span><span class = "emoji" onclick="paste(':hotdog:')">🌭</span><span class = "emoji" onclick="paste(':hamburger:')">🍔</span><span class = "emoji" onclick="paste(':taco:')">🌮</span><span class = "emoji" onclick="paste(':dumpling:')">🥟</span><span class = "emoji" onclick="paste(':fried_shrimp:')">🍤</span><span class = "emoji" onclick="paste(':fries:')">🍟</span><span class = "emoji" onclick="paste(':cookie:')">🍪</span><span class = "emoji" onclick="paste(':doughnut:')">🍩</span><span class = "emoji" onclick="paste(':sushi:')">🍣</span><span class = "emoji" onclick="paste(':poultry_leg:')">🍗</span>
-
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script src="/static/js/autocomplete.js"></script>
+  <script>
+    autocomplete(document.getElementById("m"), shortcodes, icons);
+  </script>
   {{> footer}}
   {{> chatScript}}
 </html>

@@ -8,7 +8,9 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const hbs = require('hbs');
 const bcrypt = require('bcrypt-nodejs');
+const fs = require('fs');
 const port = process.env.PORT || 8080;
+
 
 
 var utils = require('./utils');
@@ -182,7 +184,6 @@ app.get('/profile/:username', function(req, res) {
                 link:'/'
             });
         }
-
     });
 });
 
