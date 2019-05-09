@@ -21,13 +21,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-light nav-link button1" style = "margin: 5px" href="{{pages.[1]}}" role="button">Home</a>
+                    <a class="btn btn-light nav-link button1" style = "margin: 5px; font-size: 1em" href="{{pages.[1]}}" role="button">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-light nav-link button1" style = "margin: 5px" href="#">Log In <span class="sr-only">(current)</span></a>
+                    <a class="btn btn-light nav-link button1" style = "margin: 5px; font-size: 1em" href="#">Log In <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-light nav-link button1" style = "margin: 5px" href="{{pages.[0]}}" role="button">Sign Up</a>
+                    <a class="btn btn-light nav-link button1" style = "margin: 5px; font-size: 1em" href="{{pages.[0]}}" role="button">Sign Up</a>
                 </li>
 
             </ul>
@@ -35,9 +35,8 @@
         </div>
     </nav>
 
-
-        <form action="/login-form" method="post" class="LogColor container-fluid" style="margin-bottom: 80px">
-            <a class="font3" > L O G I N </a>
+        <form action="/login-form" method="post" class="LogColor container-fluid" style="margin-top: 30px; margin-bottom: 45px">
+            <p class="font3" style="text-align: center"> L O G I N </p>
             <hr style="border: black solid 1px">
             <div class="form-group margin2" >
                 <label class="font2">Username: </label>
@@ -48,7 +47,7 @@
                 <label class="font2">Password: </label>
                 <input type="password" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="Enter Password" required/>
             </div>
-            <button type="submit" class="btn btn-primary" style="margin: 22px">Submit</button>
+            <p style="text-align: center"><button type="submit" class="btn btn-primary" style="margin: 15px">Submit</button></p>
         </form>
 
 </body>
