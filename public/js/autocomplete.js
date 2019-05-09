@@ -21,7 +21,7 @@ function autocomplete(inp, arr, icons) {
         for (i = 0; i < arr.length; i++) {
             /*check if the item starts with the same letters as the text field value:*/
             // if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase() && numItems < 6) {
-            if (arr[i].toUpperCase().replace(/\:/ig,"").includes(val.toUpperCase().replace(/\:/ig,"")) && numItems < 6) {
+            if (val.substr(0,1) === ":" && arr[i].toUpperCase().replace(/\:/ig,"").includes(val.toUpperCase().replace(/\:/ig,"")) && numItems < 6) {
                 /*create a DIV element for each matching element:*/
                 b = document.createElement("DIV");
                 /*make the matching letters bold:*/
