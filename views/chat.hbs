@@ -26,9 +26,11 @@
     <div class="messageBoxContainer">
       <div class="messageBox">
         <div id='messageContainer'>
-          <ul id="messages"></ul>
+          <div id="autocompleteContainer">
+            <ul id="messages"></ul>
+          </div>
         </div>
-        <div>
+        <div class="formContainer" id="formContainer">
           <form id="f" action="" onsubmit='postMessage()'>
             <input id="m" autocomplete="off" maxlength="200"  placeholder="Type something..." autofocus/>
             <button class = "emojiButton" onclick="showPicker()">😃</button>
@@ -80,6 +82,10 @@
       </div>
     </div>
   </body>
+  <script src="/static/js/autocomplete.js"></script>
+  <script>
+    autocomplete(document.getElementById("m"), shortcodes, icons);
+  </script>
   {{> footer}}
   {{> chatScript}}
 </html>

@@ -5,9 +5,9 @@ const msgs = require('../messages');
 describe('Messages', () => {
     describe('createMessage()', () => {
         it('createMessage should wrap a message in html', () => {
-            output = '<li><span style="color: #FFFFFF"><a href=/profile/${user} target="_blank" >Jimmy</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgs.getTime() + '</span><br><span>Hello</span></li>';        
+            output = '<li><span style="color: #FFFFFF"><a href=/profile/Jimmy target="_blank" >Jimmy</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgs.getTime() + '</span><br><span>Hello</span></li>';        
             result = msgs.createMessage('Hello', 'Jimmy', msgs.getTime(), 'FFFFFF')
-            assert.equal(result, output);
+            assert.strictEqual(result, output);
         })
     
         it('createMessage should output a string', () => {
@@ -21,14 +21,14 @@ describe('Messages', () => {
             });
         })
         it("createMessage should remove html tags before wrapping the message", () => {
-            output = '<li><span style="color: #FFFFFF"><a href=/profile/${user} target="_blank" >Jimmy</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgs.getTime() + '</span><br><span>Hello</span></li>';        
-            result = msgs.createMessage('<script>Hello</script>', 'Jimmy', msgs.getTime(), 'FFFFFF')
-            assert.equal(result, output);
+            var output = '<li><span style="color: #FFFFFF"><a href=/profile/Jimmy target="_blank" >Jimmy</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgs.getTime() + '</span><br><span>Hello</span></li>';        
+            var result = msgs.createMessage('<script>Hello</script>', 'Jimmy', msgs.getTime(), 'FFFFFF')
+            assert.strictEqual(result, output);
         })
         it("createMessage should convert emojis", () => {
-            output = '<li><span style="color: #FFFFFF"><a href=/profile/${user} target="_blank" >Jimmy</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgs.getTime() + '</span><br><span>🍕</span></li>';        
-            result = msgs.createMessage(':pizza:', 'Jimmy', msgs.getTime(), 'FFFFFF')
-            assert.equal(result, output);
+            var output = '<li><span style="color: #FFFFFF"><a href=/profile/Jimmy target="_blank" >Jimmy</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgs.getTime() + '</span><br><span>🍕</span></li>';        
+            var result = msgs.createMessage(':pizza:', 'Jimmy', msgs.getTime(), 'FFFFFF')
+            assert.strictEqual(result, output);
         })    
     });
     
