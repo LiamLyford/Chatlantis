@@ -21,21 +21,21 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto ">
             <li class="nav-item ">
-                <a class="btn btn-light nav-link button1" style = "margin: 5px" href="{{pages.[1]}}" role="button">Home</a>
+                <a class="btn btn-light button1" style = "margin: 5px; font-size: 0.8em; opacity: 0.8;" href="{{pages.[1]}}" role="button">Home</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-light nav-link button1" style = "margin: 5px" href="{{pages.[0]}}">Log In </a>
+                <a class="btn btn-light button1" style = "margin: 5px; font-size: 0.8em; opacity: 0.8;" href="{{pages.[0]}}">Log In</a>
             </li>
             <li class="nav-item active">
-                <a class="btn btn-light nav-link button1" style = "margin: 5px" href="#" role="button">Sign Up <span class="sr-only">(current)</span></a>
+                <a class="btn btn-light button1" style = "margin: 5px; font-size: 0.8em; opacity: 0.8;" href="#" role="button">Sign Up<span class="sr-only">(current)</span></a>
             </li>
         </ul>
     </div>
 </nav>
 
 
-<form action="/signup-form" method="post" class="LogColor container-fluid col-md-12" style="margin-bottom: 10px">
-    <a class="font3" >Sign Up </a>
+<form action="/signup-form" method="post" class="LogColor container-fluid col-md-12" style="margin-bottom: 15px">
+    <p class="font3" style="text-align: center">SIGN UP</p>
     <hr style="border: black solid 1px">
     <div class="container row">
         <div class="form-group col-sm-6">
@@ -61,8 +61,8 @@
         <label class="font2">E-mail: </label>
         <input type="email" class="form-control" name="{{box5}}" id="{{box5}}" placeholder="E-mail" required/>
     </div>
-    <div style="margin-left: 115px">
-        <button type="submit" class="btn btn-primary" value="sign up" style="margin: 22px">Submit</button>
+    <div style="text-align: center;">
+        <button type="submit" class="btn btn-primary submit_button" value="sign up" style="margin: 15px">Submit</button>
     </div>
 </form>
     <!--<form action="/signup-form" method="post">-->
