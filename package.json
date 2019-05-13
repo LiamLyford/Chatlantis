@@ -4,7 +4,7 @@
   "description": "chat room server",
   "main": "server.js",
   "scripts": {
-    "test": "mocha test/messagesTest.js --reporter mocha-simple-html-reporter --reporter-options output=report.html || true",
+    "test": "mocha test --reporter mocha-simple-html-reporter --reporter-options output=report.html || true",
     "start": "node server.js"
   },
   "repository": {

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dbff981-879b-4e09-b92c-99659d11cc32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/endpointTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/profile.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/endpointTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/endpointTest.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,14 +21,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="257" column="5" selection-start-line="257" selection-start-column="5" selection-end-line="257" selection-end-column="5" />
+            <state relative-caret-position="6120">
+              <caret line="258" column="5" selection-start-line="258" selection-start-column="5" selection-end-line="258" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/chat.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+            <state relative-caret-position="1032">
+              <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -53,20 +51,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/login.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
+            <state relative-caret-position="120">
               <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/profile.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="14" column="58" lean-forward="true" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="336">
+              <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -77,17 +72,39 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/messagesTest.js">
+        <entry file="file://$PROJECT_DIR$/report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" selection-end-line="2" selection-end-column="36" />
+            <state relative-caret-position="216">
+              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/messagesTest.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="6" column="109" selection-start-line="6" selection-start-column="109" selection-end-line="6" selection-end-column="109" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/endpointTest.js">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -115,10 +132,12 @@
         <option value="$PROJECT_DIR$/views/partials/Style.hbs" />
         <option value="$PROJECT_DIR$/views/partials/chatStyle.hbs" />
         <option value="$PROJECT_DIR$/views/profile.hbs" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/test/endpointTest.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1270" />
     <option name="width" value="1301" />
     <option name="height" value="1391" />
@@ -129,6 +148,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -155,7 +175,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -186,11 +205,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.server.js">
+  <component name="RunManager" selected="Mocha.Testing Page Render.Chatroom">
+    <configuration name="messagesTest.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/test/messagesTest.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="Array" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="Testing Page Render.Chatroom" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -198,14 +220,15 @@
       <pass-parent-env>true</pass-parent-env>
       <ui>bdd</ui>
       <extra-mocha-options />
-      <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/test/someModuleTest.js</test-file>
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/test/endpointTest.js</test-file>
       <test-names>
-        <name value="Array" />
+        <name value="Testing Page Render" />
+        <name value="Chatroom" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="test" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="Testing Page Render.Profile" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -213,10 +236,11 @@
       <pass-parent-env>true</pass-parent-env>
       <ui>bdd</ui>
       <extra-mocha-options />
-      <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/test/someModuleTest.js</test-file>
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/test/endpointTest.js</test-file>
       <test-names>
-        <name value="test" />
+        <name value="Testing Page Render" />
+        <name value="Profile" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -232,25 +256,13 @@
       <test-file>$PROJECT_DIR$/test/endpointTest.js</test-file>
       <method v="2" />
     </configuration>
-    <configuration name="test\someModuleTest.js" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>TEST_FILE</test-kind>
-      <test-file>$PROJECT_DIR$/test/someModuleTest.js</test-file>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Mocha.Testing Page Render.Chatroom" />
         <item itemvalue="Mocha.test\endpointTest.js" />
-        <item itemvalue="Mocha.test\someModuleTest.js" />
-        <item itemvalue="Mocha.test" />
-        <item itemvalue="Mocha.Array" />
+        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Mocha.Testing Page Render.Profile" />
+        <item itemvalue="Node.js.messagesTest.js" />
       </list>
     </recent_temporary>
   </component>
@@ -268,58 +280,60 @@
       <workItem from="1556573804133" duration="3359000" />
       <workItem from="1556656975094" duration="5812000" />
       <workItem from="1556728964009" duration="5667000" />
+      <workItem from="1557782039402" duration="1045000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="test - 2019.04.29 at 14h 46m 56s.xml">
-      <configuration name="test" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Testing_Page_Render_Chatroom - 2019.05.09 at 15h 52m 24s.xml">
+      <configuration name="Testing Page Render.Chatroom" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="Array - 2019.04.29 at 14h 47m 07s.xml">
-      <configuration name="Array" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Testing_Page_Render_Profile - 2019.05.09 at 15h 52m 30s.xml">
+      <configuration name="Testing Page Render.Profile" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="Array - 2019.04.29 at 14h 47m 11s.xml">
-      <configuration name="Array" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="test - 2019.04.29 at 14h 47m 21s.xml">
-      <configuration name="test" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="test - 2019.04.29 at 14h 54m 57s.xml">
-      <configuration name="test" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="test - 2019.04.29 at 14h 55m 17s.xml">
-      <configuration name="test" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="test_someModuleTest_js - 2019.04.29 at 15h 21m 50s.xml">
-      <configuration name="test\someModuleTest.js" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="test_someModuleTest_js - 2019.04.29 at 15h 22m 05s.xml">
-      <configuration name="test\someModuleTest.js" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="test_endpointTest_js - 2019.05.09 at 15h 12m 51s.xml">
+    <history-entry file="test_endpointTest_js - 2019.05.09 at 15h 57m 00s.xml">
       <configuration name="test\endpointTest.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_endpointTest_js - 2019.05.09 at 15h 13m 31s.xml">
+    <history-entry file="test_endpointTest_js - 2019.05.13 at 14h 18m 06s.xml">
       <configuration name="test\endpointTest.js" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="test_endpointTest_js - 2019.05.13 at 14h 19m 55s.xml">
+      <configuration name="test\endpointTest.js" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="test_endpointTest_js - 2019.05.13 at 14h 20m 17s.xml">
+      <configuration name="test\endpointTest.js" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="test_endpointTest_js - 2019.05.13 at 14h 20m 39s.xml">
+      <configuration name="test\endpointTest.js" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="test_endpointTest_js - 2019.05.13 at 14h 21m 28s.xml">
+      <configuration name="test\endpointTest.js" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="test_endpointTest_js - 2019.05.13 at 14h 29m 36s.xml">
+      <configuration name="test\endpointTest.js" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Testing_Page_Render_Chatroom - 2019.05.13 at 14h 30m 33s.xml">
+      <configuration name="Testing Page Render.Chatroom" configurationId="mocha-javascript-test-runner" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17199000" />
+    <option name="totallyTimeSpent" value="20353000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1721" height="935" extended-state="6" />
+    <frame x="847" y="0" width="867" height="927" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.087292165" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.39518073" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="npm" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.32884097" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.33147633" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.356" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.35579515" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -332,16 +346,20 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/messagesTest.js</url>
+          <line>12</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/socket.io/lib/socket.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -362,13 +380,6 @@
             <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/login.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -406,15 +417,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/chatScript.hbs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="18" column="68" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/chatStyle.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="14" column="100" selection-start-line="14" selection-start-column="100" selection-end-line="14" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6120">
+          <caret line="258" column="5" selection-start-line="258" selection-start-column="5" selection-end-line="258" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -426,51 +451,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="257" column="5" selection-start-line="257" selection-start-column="5" selection-end-line="257" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/chat.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+        <state relative-caret-position="1032">
+          <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/chatStyle.hbs">
+    <entry file="file://$PROJECT_DIR$/views/login.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profile.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
-          <caret line="14" column="100" selection-start-line="14" selection-start-column="100" selection-end-line="14" selection-end-column="100" />
+          <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/chatScript.hbs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/messagesTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" selection-end-line="2" selection-end-column="36" />
+        <state relative-caret-position="96">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="109" selection-start-line="6" selection-start-column="109" selection-end-line="6" selection-end-column="109" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/endpointTest.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/profile.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="14" column="58" lean-forward="true" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="141">
+          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
         </state>
       </provider>
     </entry>
