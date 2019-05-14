@@ -5,13 +5,14 @@ const msgs = require('../messages');
 describe('Messages', () => {
     describe('createMessage()', () => {
         it('createMessage should wrap a message in html', () => {
-            output = '<li><span style="color: #FFFFFF"><a href=/profile/Jimmy target="_blank" >Jimmy</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgs.getTime() + '</span><br><span>Hello</span></li>';        
-            result = msgs.createMessage('Hello', 'Jimmy', msgs.getTime(), 'FFFFFF')
+            var output = '<li><span style="color: #FFFFFF"><a href=/profile/Jimmy target="_blank" >Jimmy</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgs.getTime() + '</span><br><span>Hello</span></li>';        
+            var result = msgs.createMessage('Hello', 'Jimmy', msgs.getTime(), 'FFFFFF')
             assert.strictEqual(result, output);
         })
     
         it('createMessage should output a string', () => {
-            result = msgs.createMessage('Hello', 'Jimmy', msgs.getTime(), 'FFFFFF')
+            var result = msgs.createMessage('Hello', 'Jimmy', msgs.getTime(), 'FFFFFF')
+            // var result = 1;
             assert.typeOf(result, 'string');
         }) 
     
@@ -38,25 +39,25 @@ describe('Messages', () => {
         })
     })
 
-    describe('logMessage()', () => {
-        it("logMessage should return an array", async () => {
-            utils.init();
-            await sleep();
-            db = utils.getDb();
-            testMsg = msgs.createMessage('test', 'test', 'test', 'F77777');
-            result = await msgs.logMessage('test', testMsg);
-            // db.collection('log').deleteOne({username: 'test'});
-            assert.typeOf(result, 'array');
-        })
-        it("logMessage should add a message to the end of the array", async () => {
-            db = utils.getDb();
-            testMsg = msgs.createMessage('test', 'test', 'test', 'F77777');
-            result = await msgs.logMessage('test', testMsg);
-            // db.collection('log').deleteOne({username: 'test'});
-            utils.close();
-            assert.equal(result[result.length-1].msg, testMsg)
-        })
-    })
+    // describe('logMessage()', () => {
+    //     it("logMessage should return an array", async () => {
+    //         utils.init();
+    //         await sleep();
+    //         db = utils.getDb();
+    //         testMsg = msgs.createMessage('test', 'test', 'test', 'F77777');
+    //         result = await msgs.logMessage('test', testMsg);
+    //         // db.collection('log').deleteOne({username: 'test'});
+    //         assert.typeOf(result, 'array');
+    //     })
+    //     it("logMessage should add a message to the end of the array", async () => {
+    //         db = utils.getDb();
+    //         testMsg = msgs.createMessage('test', 'test', 'test', 'F77777');
+    //         result = await msgs.logMessage('test', testMsg);
+    //         // db.collection('log').deleteOne({username: 'test'});
+    //         utils.close();
+    //         assert.equal(result[result.length-1].msg, testMsg)
+    //     })
+    // })
     
 })
 
