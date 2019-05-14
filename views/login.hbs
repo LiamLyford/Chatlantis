@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
     <title>{{title}}</title>
     {{> bootstrap}}
     {{> Style}}
@@ -13,21 +13,21 @@
 </head>
 <body class="background">
     <nav class="navbar navbar-expand-lg navbar-light background">
-        <a class="navbar-brand font1" style="font-size: 30px; font-weight: bolder; color: rgba(255,255,255,0.95)">CHATLANTIS</a>
+        <a class="navbar-brand" style="font-family: 'Amatic SC', cursive; font-size: 25px; font-weight: bolder">CHATLANTIS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="btn btn-light button1" style = "margin: 5px; font-size: 0.8em; opacity: 0.8;" href="{{pages.[1]}}" role="button">Home</a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{pages.[1]}}" role="button">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-light button1" style = "margin: 5px; font-size: 0.8em; opacity: 0.8;" href="#">Log In<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="#">Log In <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-light button1" style = "margin: 5px; font-size: 0.8em; opacity: 0.8;" href="{{pages.[0]}}" role="button">Sign Up</a>
+                    <a class="nav-link " href="{{pages.[0]}}" role="button">Sign Up</a>
                 </li>
 
             </ul>
@@ -35,8 +35,9 @@
         </div>
     </nav>
 
-        <form action="/login-form" method="post" class="LogColor container-fluid" style="margin-top: 30px; margin-bottom: 45px">
-            <p class="font3" style="text-align: center">LOG IN</p>
+
+        <form action="/login-form" method="post" class="LogColor container-fluid" style="margin-bottom: 80px">
+            <a class="font3" > L O G I N </a>
             <hr style="border: black solid 1px">
             <div class="form-group margin2" >
                 <label class="font2">Username: </label>
@@ -45,9 +46,9 @@
             </div>
             <div class="form-group margin2">
                 <label class="font2">Password: </label>
-                <input type="password" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="Enter Password" required/>
+                <input type="password" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="Password" required/>
             </div>
-            <p style="text-align: center"><button type="submit" class="btn btn-light submit_button" style="margin: 15px; font-size: 1em; opacity: 0.8;">Submit</button></p>
+            <button type="submit" class="btn btn-primary" style="margin: 22px">Submit</button>
         </form>
 
 </body>
