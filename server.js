@@ -10,6 +10,7 @@ const hbs = require('hbs');
 const bcrypt = require('bcrypt-nodejs');
 const port = process.env.PORT || 8080;
 
+
 var utils = require('./utils');
 var msgs = require('./messages');
 var app = express();
@@ -29,7 +30,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }));
-
+app.use('/static', express.static('public'));
 hbs.registerHelper('getCurrentYear', ()=>{
     return today.getFullYear();
 });
@@ -144,14 +145,12 @@ app.post('/signup-form', (req, res)=> {
         if (doc.length == 0){
             db.collection('users').insertOne({
                 username: username,
-                //password: password,
                 hash: bcrypt.hashSync(password),
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
                 registration_date: today
             });
-            // res.send(req.body);
             res.redirect('/login');
         }else{
             res.redirect('/signup/exists');
@@ -172,7 +171,7 @@ app.get('/logout', (req, res)=> {
 app.get('/profile/:username', function(req, res) {
     var db = utils.getDb();
     db.collection('users').find({username: req.params.username}).toArray(function(err,user){
-        if (err){
+        if (err || !(user[0])){
             res.send('User does not exist.');
         }else{
             res.render('profile.hbs', {
@@ -201,24 +200,12 @@ app.get('/chatroom', (req, res)=> {
     }
 });
 
-var chatLog = [];
-const MAXLOGS = 100;
-var logMessage = (user, msg) => {
-    newLog = {
-        user: user,
-        msg: msg
-    }
-    chatLog.push(newLog);
-    if (chatLog.length >= MAXLOGS) {
-        chatLog.shift()
-    }
-}
-
+var chatLog = []
 var chat = io.of('/chatroom');
 chat.on('connection', (socket) => {
     socket.hasName = false;
-
-    socket.on('add user', (user, colour) => {
+    
+    socket.on('add user', async (user, colour) => {
         for (clientIndex in clients){
             if (clients[clientIndex] === user){
                 socket.isClient = true;
@@ -229,11 +216,14 @@ chat.on('connection', (socket) => {
             socket.username = user;
             socket.colour = colour;
             socket.hasName = true
-            for (i = 0; i < chatLog.length; i++){
+            msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">connected!</span></li>';
+            chatLog = await msgs.logMessage("", msg);
+            // console.log('displaying');
+            // console.log(chatLog[chatLog.length-1])
+            for (i = 0; i < chatLog.length - 1; i++){
+                // console.log('next' + chatLog[i].msg)
                 socket.emit('chat message', chatLog[i].msg, chatLog[i].user);
             }
-            msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">connected!</span></li>';
-            logMessage("", msg);
             chat.emit('chat message', msg, "");
         };
     });
@@ -251,14 +241,14 @@ chat.on('connection', (socket) => {
             msg = msgs.createMessage(err.message, socket.username, time, socket.colour);
         }
         if (socket.username != "L337NATION"){
-            logMessage(socket.username, msg);
+            msgs.logMessage(socket.username, msg);
         }
         chat.emit('chat message', msg, socket.username);
     });
 
     socket.on('disconnect', () => {
         msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">disconnected :(</span></li>';
-        logMessage("", msg);
+        msgs.logMessage("", msg);
         chat.emit('chat message', msg, "");
     });
 });

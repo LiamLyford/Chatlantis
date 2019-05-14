@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
     {{> bootstrap}}
     {{> Style}}
@@ -13,7 +13,7 @@
 </head>
 <body class="background">
 <nav class="navbar navbar-expand-lg navbar-light background">
-    <a class="navbar-brand" style="font-family: 'Amatic SC', cursive; font-size: 25px; font-weight: bolder">CHATLANTIS</a>
+    <a class="navbar-brand font1" style="font-size: 25px; font-weight: bolder">CHATLANTIS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,20 +21,20 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto ">
             <li class="nav-item ">
-                <a class="nav-link" href="{{pages.[1]}}" role="button">Home</a>
+                <a class="nav-link button1" href="{{pages.[1]}}" role="button">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="{{pages.[0]}}">Log In </a>
+                <a class="nav-link button1" href="{{pages.[0]}}">Log In </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link " href="#" role="button">Sign Up <span class="sr-only">(current)</span></a>
+                <a class="nav-link button1" href="#" role="button">Sign Up <span class="sr-only">(current)</span></a>
             </li>
         </ul>
     </div>
 </nav>
 
 
-<form action="/signup-form" method="post" class="LogColor container-fluid col-md-12" style="margin-bottom: 80px">
+<form action="/signup-form" method="post" class="LogColor container-fluid col-md-12" style="margin-bottom: 10px">
     <a class="font3" >Sign Up </a>
     <hr style="border: black solid 1px">
     <div class="container row">
@@ -62,7 +62,7 @@
         <input type="email" class="form-control" name="{{box5}}" id="{{box5}}" placeholder="E-mail" required/>
     </div>
     <div style="margin-left: 115px">
-        <button type="submit" class="btn btn-primary" value="sign up" style="margin: 22px">Submit</button>
+        <button type="submit" class="button" value="sign up" style="margin: 22px"><span>Submit</span></button>
     </div>
 </form>
     <!--<form action="/signup-form" method="post">-->
