@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-    {{> bootstrap}}
-    {{> Style}}
-
-
-
-
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{title}}</title>
+	{{> bootstrap}}
+	{{> Style}}
 </head>
 <body class="background">
-    <div class="backgroundColor margin1 " >
-        <h1 class="font1" style="font-weight: bold">C H A T L A N T I S.</h1>
-        <br>
-        <a href="{{pages.[0]}}" role="button"class="btn btn-light">Sign Up</a> &nbsp;
-        <a href="{{pages.[1]}}" role="button"class="btn btn-light">Log In</a>
-    </div>
 
 
+	<div class="backgroundColor margin1 jumbotron jumbotron1" style="text-align: center; margin-bottom: 35px">
+		<h1 class='font1' style="font-weight: bold">C H A T L A N T I S.</h1>
+		<br>
+		<a href="{{pages.[0]}}" role="button" class="btn btn-light button" style = "margin-top: 35px; margin-right: 5px; margin-left:5px; font-size: 1em; opacity: 0.8;">Sign Up</a> &nbsp;
+		<a href="{{pages.[1]}}" role="button" class="btn btn-light button" style = "margin-top: 35px; margin-right: 5px; margin-left:5px; font-size: 1em; opacity: 0.8;">Log In</a>
+	</div>
 
 </body>
 {{> footer}}
