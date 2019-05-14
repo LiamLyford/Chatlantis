@@ -12,8 +12,83 @@
 	<div class="backgroundColor margin1 jumbotron" style="text-align: center; margin-bottom: 35px">
 		<h1 class='font1' style="font-weight: bold">C H A T L A N T I S.</h1>
 		<br>
-		<a href="{{pages.[0]}}" role="button" class="btn btn-light button" style = "margin-top: 35px; margin-right: 5px; margin-left:5px; font-size: 1em; opacity: 0.8;">Sign Up</a> &nbsp;
-		<a href="{{pages.[1]}}" role="button" class="btn btn-light button" style = "margin-top: 35px; margin-right: 5px; margin-left:5px; font-size: 1em; opacity: 0.8;">Log In</a>
+		<button type="button" data-toggle="modal" data-target="#getStartedModal" class="btn btn-light button" style="margin-top: 35px; margin-right: 5px; margin-left:5px; font-size: 1em; opacity: 0.8;">Get Started</button>
+
+	</div>
+
+	<div class="modal" id="getStartedModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title font1">Welcome!</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body font1" style="font-size: 15px">
+					<form action="/login-form" method="post" class="LogColor container-fluid" style="margin-top: 30px; margin-bottom: 45px">
+						<div class="form-group margin2" >
+							<br>
+							<label class="font2">Username: </label>
+							<input type="text" class="form-control" name="{{box1}}" id="{{box1}}" placeholder="Enter Username" required />
+
+						</div>
+						<div class="form-group margin2">
+							<label class="font2">Password: </label>
+							<input type="password" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="Enter Password" required/>
+						</div>
+						<p style="text-align: center">
+							<button type="button" data-toggle='modal' data-target='#signUpModal' onmouseout="this.innerHTML='New User?'" onmouseover="this.innerHTML='Sign Up'" class="btn btn-light button" style="margin: 15px; font-size: 1em; opacity: 0.8;">New User?</button>
+							<button type="submit" class="btn btn-light submit_button" style="margin: 15px; font-size: 1em; opacity: 0.8;">Login</button>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="signUpModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title font1" style="font-size: 30px">Sign Up</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body font1" style="font-size: 15px; height:400">
+					<form action="/signup-form" method="post" class="LogColor container-fluid col-md-12" style="margin-bottom: 150px">
+						<br>
+						<div class="container row">
+							<div class="form-group col-sm-6">
+								<label class="font2">Last Name: </label>
+								<input type="text" class="form-control" name="{{box3}}" id="{{box3}}" placeholder="Last name" required/>
+							</div>
+							<div class="form-group col-sm-6">
+								<label class="font2">First Name: </label>
+								<input type="text" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="First name" required/>
+							</div>
+						</div>
+						<div class="container row">
+							<div class="form-group col-6" >
+								<label class="font2">Username: </label>
+								<input type="text" class="form-control" name="{{box1}}" id="{{box1}}" placeholder="Username" required />
+							</div>
+							<div class="form-group col-sm-6">
+								<label class="font2">Password: </label>
+								<input type="password" class="form-control" name="{{box4}}" id="{{box4}}" placeholder="Password" required/>
+							</div>
+						</div>
+						<div class="form-group col-11">
+							<label class="font2">E-mail: </label>
+							<input type="email" class="form-control" name="{{box5}}" id="{{box5}}" placeholder="E-mail" required/>
+						</div>
+						<div style="text-align: center;">
+							<button type="submit" class="btn btn-primary submit_button" value="sign up" style="margin: 15px">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </body>
