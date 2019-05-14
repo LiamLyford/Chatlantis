@@ -430,16 +430,16 @@ body {
                     <li class="duration">duration: <em>1.4s</em></li>
                 </ul>
             </div>
-            <ul id="report"><li class="suite"><h1>Messages</h1><ul><li class="suite"><h1>createMessage()</h1><ul><li class="test pass fast"><h2>createMessage should wrap a message in html<span class="duration">9ms</span></h2><pre><code>output = &#x27;&#x3C;li&#x3E;&#x3C;span style=&#x22;color: #FFFFFF&#x22;&#x3E;&#x3C;a href=/profile/Jimmy target=&#x22;_blank&#x22; &#x3E;Jimmy&#x3C;/a&#x3E;&#x3C;/span&#x3E; &#x3C;span style=&#x22;font-size: 85%; color: darkgrey&#x22;&#x3E;- &#x27; + msgs.getTime() + &#x27;&#x3C;/span&#x3E;&#x3C;br&#x3E;&#x3C;span&#x3E;Hello&#x3C;/span&#x3E;&#x3C;/li&#x3E;&#x27;;        
+            <ul id="report"><li class="suite"><h1>Messages</h1><ul><li class="suite"><h1>createMessage()</h1><ul><li class="test pass fast"><h2>createMessage should wrap a message in html<span class="duration">4ms</span></h2><pre><code>output = &#x27;&#x3C;li&#x3E;&#x3C;span style=&#x22;color: #FFFFFF&#x22;&#x3E;&#x3C;a href=/profile/Jimmy target=&#x22;_blank&#x22; &#x3E;Jimmy&#x3C;/a&#x3E;&#x3C;/span&#x3E; &#x3C;span style=&#x22;font-size: 85%; color: darkgrey&#x22;&#x3E;- &#x27; + msgs.getTime() + &#x27;&#x3C;/span&#x3E;&#x3C;br&#x3E;&#x3C;span&#x3E;Hello&#x3C;/span&#x3E;&#x3C;/li&#x3E;&#x27;;        
 result = msgs.createMessage(&#x27;Hello&#x27;, &#x27;Jimmy&#x27;, msgs.getTime(), &#x27;FFFFFF&#x27;)
-assert.strictEqual(result, output);</code></pre></li><li class="test pass fast"><h2>createMessage should output a string<span class="duration">1ms</span></h2><pre><code>result = msgs.createMessage(&#x27;Hello&#x27;, &#x27;Jimmy&#x27;, msgs.getTime(), &#x27;FFFFFF&#x27;)
+assert.strictEqual(result, output);</code></pre></li><li class="test pass fast"><h2>createMessage should output a string<span class="duration">0ms</span></h2><pre><code>result = msgs.createMessage(&#x27;Hello&#x27;, &#x27;Jimmy&#x27;, msgs.getTime(), &#x27;FFFFFF&#x27;)
 assert.typeOf(result, &#x27;string&#x27;);</code></pre></li><li class="test pass fast"><h2>createMessage should throw an error if message is empty<span class="duration">1ms</span></h2><pre><code>assert.throws(() =&#x3E; {
     msgs.createMessage(&#x22;&#x22;, &#x27;Jimmy&#x27;, msgs.getTime(), &#x27;FFFFFF&#x27;)
 });</code></pre></li><li class="test pass fast"><h2>createMessage should remove html tags before wrapping the message<span class="duration">0ms</span></h2><pre><code>var output = &#x27;&#x3C;li&#x3E;&#x3C;span style=&#x22;color: #FFFFFF&#x22;&#x3E;&#x3C;a href=/profile/Jimmy target=&#x22;_blank&#x22; &#x3E;Jimmy&#x3C;/a&#x3E;&#x3C;/span&#x3E; &#x3C;span style=&#x22;font-size: 85%; color: darkgrey&#x22;&#x3E;- &#x27; + msgs.getTime() + &#x27;&#x3C;/span&#x3E;&#x3C;br&#x3E;&#x3C;span&#x3E;Hello&#x3C;/span&#x3E;&#x3C;/li&#x3E;&#x27;;        
 var result = msgs.createMessage(&#x27;&#x3C;script&#x3E;Hello&#x3C;/script&#x3E;&#x27;, &#x27;Jimmy&#x27;, msgs.getTime(), &#x27;FFFFFF&#x27;)
 assert.strictEqual(result, output);</code></pre></li><li class="test pass fast"><h2>createMessage should convert emojis<span class="duration">0ms</span></h2><pre><code>var output = &#x27;&#x3C;li&#x3E;&#x3C;span style=&#x22;color: #FFFFFF&#x22;&#x3E;&#x3C;a href=/profile/Jimmy target=&#x22;_blank&#x22; &#x3E;Jimmy&#x3C;/a&#x3E;&#x3C;/span&#x3E; &#x3C;span style=&#x22;font-size: 85%; color: darkgrey&#x22;&#x3E;- &#x27; + msgs.getTime() + &#x27;&#x3C;/span&#x3E;&#x3C;br&#x3E;&#x3C;span&#x3E;&#x1F355;&#x3C;/span&#x3E;&#x3C;/li&#x3E;&#x27;;        
 var result = msgs.createMessage(&#x27;:pizza:&#x27;, &#x27;Jimmy&#x27;, msgs.getTime(), &#x27;FFFFFF&#x27;)
-assert.strictEqual(result, output);</code></pre></li></ul></li><li class="suite"><h1>getTime()</h1><ul><li class="test pass fast"><h2>getTime should return a string<span class="duration">0ms</span></h2><pre><code>assert.typeOf(msgs.getTime(), &#x27;string&#x27;);</code></pre></li></ul></li><li class="suite"><h1>logMessage()</h1><ul><li class="test pass slow"><h2>logMessage should return an array<span class="duration">1237ms</span></h2><pre><code>async () =&#x3E; {
+assert.strictEqual(result, output);</code></pre></li></ul></li><li class="suite"><h1>getTime()</h1><ul><li class="test pass fast"><h2>getTime should return a string<span class="duration">0ms</span></h2><pre><code>assert.typeOf(msgs.getTime(), &#x27;string&#x27;);</code></pre></li></ul></li><li class="suite"><h1>logMessage()</h1><ul><li class="test pass slow"><h2>logMessage should return an array<span class="duration">1217ms</span></h2><pre><code>async () =&#x3E; {
             utils.init();
             await sleep();
             db = utils.getDb();
@@ -447,7 +447,7 @@ assert.strictEqual(result, output);</code></pre></li></ul></li><li class="suite"
             result = await msgs.logMessage(&#x27;test&#x27;, testMsg);
             // db.collection(&#x27;log&#x27;).deleteOne({username: &#x27;test&#x27;});
             assert.typeOf(result, &#x27;array&#x27;);
-        }</code></pre></li><li class="test pass slow"><h2>logMessage should add a message to the end of the array<span class="duration">174ms</span></h2><pre><code>async () =&#x3E; {
+        }</code></pre></li><li class="test pass slow"><h2>logMessage should add a message to the end of the array<span class="duration">177ms</span></h2><pre><code>async () =&#x3E; {
             db = utils.getDb();
             testMsg = msgs.createMessage(&#x27;test&#x27;, &#x27;test&#x27;, &#x27;test&#x27;, &#x27;F77777&#x27;);
             result = await msgs.logMessage(&#x27;test&#x27;, testMsg);
