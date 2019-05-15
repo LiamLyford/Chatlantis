@@ -6,6 +6,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MongoClient = require('connect-mongodb-session')(session);
+// const MongoStore = require('connect-mongodb-session')(session);
 const hbs = require('hbs');
 const bcrypt = require('bcrypt-nodejs');
 const fs = require('fs');
@@ -22,16 +24,35 @@ var today = new Date();
 var clients = [];
 
 hbs.registerPartials(__dirname + '/views/partials');
-
 app.set('view engine', 'hbs');
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
 app.use(cookieParser());
 app.use(session({
-    secret: 'thesecret',
-    saveUninitialized: false,
-    resave: false
+    secret: 'secret',
+    name: 'mySession',
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 30
+    },
+    resave: false,
+    saveUninitialized: true,
+    client: new MongoClient({
+        uri: 'mongodb+srv://Heroku:3wayHandsh%40ke@cluster0-ht3vg.mongodb.net/test?retryWrites=true/chatroom'
+    })
 }));
+
+// res.locals is an object passed to hbs engine
+app.use(function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
+
+///////////////////////////////////////////////////////
+
 app.use('/static', express.static('public'));
 hbs.registerHelper('getCurrentYear', ()=>{
     return today.getFullYear();
@@ -77,7 +98,7 @@ app.post('/login-form', (req, res)=> {
 
     var db = utils.getDb();
 
-    db.collection('users').find({username:req.body.username}).toArray(function(err,user){
+    db.collection('users').find({username:username}).toArray(function(err,user){
         if (err){
             res.send('Unable to find user.');
         }
@@ -201,7 +222,7 @@ app.get('/chatroom', (req, res)=> {
     }
 });
 
-var chatLog = []
+var chatLog = [];
 var chat = io.of('/chatroom');
 chat.on('connection', (socket) => {
     socket.hasName = false;
@@ -216,7 +237,7 @@ chat.on('connection', (socket) => {
         if (!socket.hasName && socket.isClient) {
             socket.username = user;
             socket.colour = colour;
-            socket.hasName = true
+            socket.hasName = true;
             msg = `<li><span style="color: #${socket.colour}"><a href=/profile/${socket.username} target="_blank" >` + socket.username + '</a></span> <span style="font-size: 85%; color: darkgrey">connected!</span></li>';
             chatLog = await msgs.logMessage("", msg);
             // console.log('displaying');
@@ -226,7 +247,7 @@ chat.on('connection', (socket) => {
                 socket.emit('chat message', chatLog[i].msg, chatLog[i].user);
             }
             chat.emit('chat message', msg, "");
-        };
+        }
     });
 
     socket.on('chat message', (msg) => {

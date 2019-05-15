@@ -1,4 +1,4 @@
-const emoji = require('node-emoji')
+const emoji = require('node-emoji');
 var utils = require('./utils');
 
 var getTime = () => {
@@ -7,7 +7,7 @@ var getTime = () => {
     date = date.slice(4).replace(/\ /ig, "/");
     hours = time.getHours();
     minutes = time.getMinutes();
-    ampm = (hours >= 12 ? "pm" : "am")
+    ampm = (hours >= 12 ? "pm" : "am");
     if (hours > 12){hours -= 12;} 
         else if (hours === 0) {hours = 12;}
     if (minutes < 10) {minutes = "0" + minutes}
@@ -22,9 +22,9 @@ var stripMessage = (msg) => {
     // msg = msg.replace(/"/gi, "&quot;");
     // msg = msg.replace(/'/gi, "&#039;");
     // msg = msg.replace(/\\/gi, "&#092;");
-    msg = msg.replace(/(<([^>]+)>)/ig,"")
+    msg = msg.replace(/(<([^>]+)>)/ig,"");
     return msg
-}
+};
 
 var createMessage = (msg, user, msgTime, colour) => {
     msg = stripMessage(msg);
@@ -36,7 +36,7 @@ var createMessage = (msg, user, msgTime, colour) => {
     }
     output = `<li><span style="color: #${colour}"><a href=/profile/${user} target="_blank" >` + user + '</a></span> <span style="font-size: 85%; color: darkgrey">- ' + msgTime + '</span><br><span>' + msg + '</span></li>';
     return output
-}
+};
 
 const MAXLOGS = 100;
 var logMessage = (user, msg) => {
@@ -45,7 +45,7 @@ var logMessage = (user, msg) => {
         db.collection('log').insertOne({
                 user: user,
                 msg: msg
-        })
+        });
         db.collection('log').find({}).toArray(function(err,log){
             if (err){
                 res.send('Problem loading chat log.');
@@ -63,7 +63,7 @@ var logMessage = (user, msg) => {
             }
         });
     });
-}
+};
 
 // console.log(emoji.emojify(':pizza:'))
 
@@ -71,4 +71,4 @@ module.exports = {
     createMessage,
     logMessage,
     getTime
-}
+};

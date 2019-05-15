@@ -1,4 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
+// const ObjectId = require("mongodb").ObjectId;
+//
+// module.exports.ObjectId = ObjectId;
 
 var _db = null;
 var client = null;
@@ -20,7 +23,9 @@ module.exports.init = function(){
     });
 };
 
+////////////////////////////////////////////
+
 module.exports.close = () => {
     client.close();
     console.log('Successfully closed MongoDB connection');
-}
+};
