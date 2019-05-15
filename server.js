@@ -82,7 +82,7 @@ app.post('/login-form', (req, res)=> {
             res.send('Unable to find user.');
         }
         if (user.length == 0){
-            res.redirect('/login/incorrect');
+            res.send('Error: Duplicate Username');
         }else{
             // console.log(typeof password);
             // console.log(user[0].hash);
@@ -153,7 +153,8 @@ app.post('/signup-form', (req, res)=> {
                 email: email,
                 registration_date: today
             });
-            res.redirect('/login');
+            req.session.user = user;
+            res.redirect('/chatroom');
         }else{
             res.redirect('/signup/exists');
         }
@@ -187,9 +188,56 @@ app.get('/profile/:username', function(req, res) {
     });
 });
 
+app.post('/checkreg',(req,res)=>{
+    let db = utils.getDb();
+    let servercheck = {};
+    // console.log(req.body)
+    db.collection('users').find({email: req.body.email}).toArray((err,result)=>{
+        if (err) {
+            res.send("An error occurred when accessing the database.");
+            throw err
+        }
+        // console.log(result.length);
+        servercheck['email'] = result.length !== 0;
+        db.collection('users').find({username: req.body.name}).toArray((err,result)=>{
+            if (err) {
+                res.send("An error occurred when accessing the database.");
+                throw err
+            }
+            servercheck['username'] = result.length !== 0;
+            // console.log(servercheck)
+            res.send(servercheck)
+        })
+    });
+});
+
+app.post('/checkLogin',(req,res)=>{
+    let db = utils.getDb();
+    // console.log(req.body)
+    db.collection('users').find({username:req.body.username}).toArray(function(err,user){
+        if (err){
+            throw err
+        }
+        console.log(user)
+        if (user.length == 0){
+            res.send(true);
+        }else{
+            // console.log(typeof password);
+            // console.log(user[0].hash);
+            if (bcrypt.compareSync(req.body.password, user[0].hash)){
+                res.send(false);
+            }else{
+                res.send(true);
+            }
+
+        }
+
+    });
+});
+
 app.get('/chatroom', (req, res)=> {
     if (!req.session.user){
-        res.redirect('/login')
+        res.redirect('/')
     }else{
         clients.push(req.session.user[0].username);
         res.render('chat.hbs', {

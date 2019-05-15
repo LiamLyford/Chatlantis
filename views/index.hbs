@@ -26,16 +26,16 @@
 					</button>
 				</div>
 				<div class="modal-body font1" style="font-size: 15px">
-					<form action="/login-form" method="post" class="LogColor container-fluid" style="margin-top: 30px; margin-bottom: 45px">
+					<form onsubmit="sendLogin()" action="/login-form" method="post" class="LogColor container-fluid" style="margin-top: 30px; margin-bottom: 45px">
 						<div class="form-group margin2" >
 							<br>
 							<label class="font2">Username: </label>
-							<input type="text" class="form-control" name="{{box1}}" id="{{box1}}" placeholder="Enter Username" required />
+							<input type="text" class="form-control" name="username" id="username" placeholder="Enter Username" required />
 
 						</div>
 						<div class="form-group margin2">
 							<label class="font2">Password: </label>
-							<input type="password" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="Enter Password" required/>
+							<input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required/>
 						</div>
 						<p style="text-align: center">
 							<button type="button" data-toggle='modal' data-target='#signUpModal' onmouseout="this.innerHTML='New User?'" onmouseover="this.innerHTML='Sign Up'" class="btn btn-light button" style="margin: 15px; font-size: 1em; opacity: 0.8;">New User?</button>
@@ -56,31 +56,31 @@
 					</button>
 				</div>
 				<div class="modal-body font1" style="font-size: 15px; height:400">
-					<form action="/signup-form" method="post" class="LogColor container-fluid col-md-12" style="margin-bottom: 150px">
+					<form onsubmit="sendRegister()" action="/signup-form" method="post" class="LogColor container-fluid col-md-12" style="margin-bottom: 150px">
 						<br>
 						<div class="container row">
 							<div class="form-group col-sm-6">
-								<label class="font2">Last Name: </label>
-								<input type="text" class="form-control" name="{{box3}}" id="{{box3}}" placeholder="Last name" required/>
+								<label class="font2">First Name: </label>
+								<input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name" required/>
 							</div>
 							<div class="form-group col-sm-6">
-								<label class="font2">First Name: </label>
-								<input type="text" class="form-control" name="{{box2}}" id="{{box2}}" placeholder="First name" required/>
+								<label class="font2">Last Name: </label>
+								<input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name" required/>
 							</div>
 						</div>
 						<div class="container row">
 							<div class="form-group col-6" >
 								<label class="font2">Username: </label>
-								<input type="text" class="form-control" name="{{box1}}" id="{{box1}}" placeholder="Username" required />
+								<input type="text" class="form-control" name="username" id="rusername" placeholder="Username" required />
 							</div>
 							<div class="form-group col-sm-6">
 								<label class="font2">Password: </label>
-								<input type="password" class="form-control" name="{{box4}}" id="{{box4}}" placeholder="Password" required/>
+								<input type="password" class="form-control" name="password" id="rpassword" placeholder="Password" required/>
 							</div>
 						</div>
 						<div class="form-group col-11">
 							<label class="font2">E-mail: </label>
-							<input type="email" class="form-control" name="{{box5}}" id="{{box5}}" placeholder="E-mail" required/>
+							<input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required/>
 						</div>
 						<div style="text-align: center;">
 							<button type="submit" class="btn btn-primary submit_button" value="sign up" style="margin: 15px">Submit</button>
@@ -90,7 +90,7 @@
 			</div>
 		</div>
 	</div>
-
 </body>
+<script src="/static/js/check.js"></script>
 {{> footer}}
 </html>
