@@ -194,7 +194,7 @@ app.post('/signup-form', (req, res)=> {
                 email: email,
                 registration_date: today
             });
-            req.session.username = user[0].username;
+            req.session.username = username;
             res.redirect('/chatroom');
         }else{
             res.redirect('/signup/exists');
