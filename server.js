@@ -37,7 +37,20 @@ hbs.registerHelper('getCurrentYear', ()=>{
     return today.getFullYear();
 });
 
+// app.get('/setCookie', (req, res) => {
+//     res.cookie('name', 'value').send('cookie = set');
+// })
+
+// app.get('/getCookie', (req, res) => {
+//     console.log("Cookies :  ", req.cookies.name);
+//     res.send('got cookie');
+// })
+
 app.get('/', (req, res)=>{
+    if(req.cookies.remembered) {
+        req.session.username = req.cookies.username;
+        res.redirect('/chatroom');
+    }
     res.render('index.hbs', {
         title: 'Home page',
         h1: 'Welcome .....',
@@ -82,12 +95,19 @@ app.post('/login-form', (req, res)=> {
             res.send('Unable to find user.');
         }
         if (user.length == 0){
-            res.send('Error: Duplicate Username');
+            res.send('Error: No user found');
         }else{
             // console.log(typeof password);
             // console.log(user[0].hash);
             if (bcrypt.compareSync(password, user[0].hash)){
-                req.session.user = user;
+                if (req.body.rememberMe === "yes"){
+                    res.cookie('username', req.body.username);
+                    res.cookie('remembered', true);
+                } else {
+                    res.cookie('username', req.body.username, {expires: new Date()});
+                    res.cookie('remembered', true, {expires: new Date()});
+                }
+                req.session.username = user[0].username;
                 res.redirect('/chatroom');
             }else{
                 res.redirect('/login/incorrect');
@@ -153,7 +173,7 @@ app.post('/signup-form', (req, res)=> {
                 email: email,
                 registration_date: today
             });
-            req.session.user = user;
+            req.session.username = user[0].username;
             res.redirect('/chatroom');
         }else{
             res.redirect('/signup/exists');
@@ -163,10 +183,12 @@ app.post('/signup-form', (req, res)=> {
 });
 
 app.get('/logout', (req, res)=> {
-    var index = clients.indexOf(req.session.user[0].username);
+    var index = clients.indexOf(req.session.username);
     if (index > -1) {
        clients.splice(index, 1);
     }
+    res.cookie('username', req.body.username, {expires: new Date()});
+    res.cookie('remembered', true, {expires: new Date()});
     req.session.destroy();
     res.redirect("/");
 });
@@ -218,7 +240,7 @@ app.post('/checkLogin',(req,res)=>{
         if (err){
             throw err
         }
-        console.log(user)
+        // console.log(user)
         if (user.length == 0){
             res.send(true);
         }else{
@@ -236,15 +258,15 @@ app.post('/checkLogin',(req,res)=>{
 });
 
 app.get('/chatroom', (req, res)=> {
-    if (!req.session.user){
+    if (!req.session.username){
         res.redirect('/')
     }else{
-        clients.push(req.session.user[0].username);
+        clients.push(req.session.username);
         res.render('chat.hbs', {
             title: 'Chatlantis',
             page: 'Log out',
             link: '/logout',
-            username: `${req.session.user[0].username}`
+            username: `${req.session.username}`
         });
     }
 });
