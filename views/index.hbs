@@ -37,11 +37,11 @@
 							<label class="font2">Password: </label>
 							<input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required/>
 						</div>
-						<div>
+						<div style="text-align:center">
 							Remember Me <input type="checkbox" name="rememberMe" value="yes"> 
 						</div>
 						<p style="text-align: center">
-							<button type="button" data-toggle='modal' data-target='#signUpModal' onmouseout="this.innerHTML='New User?'" onmouseover="this.innerHTML='Sign Up'" class="btn btn-light button" style="margin: 15px; font-size: 1em; opacity: 0.8;">New User?</button>
+							<button type="button" data-toggle='modal' data-dismiss="modal" data-target='#signUpModal' onmouseout="this.innerHTML='New User?'" onmouseover="this.innerHTML='Sign Up'" class="btn btn-light button" style="margin: 15px; font-size: 1em; opacity: 0.8;">New User?</button>
 							<button type="submit" class="btn btn-light submit_button" style="margin: 15px; font-size: 1em; opacity: 0.8;">Login</button>
 						</p>
 					</form>
@@ -86,6 +86,7 @@
 							<input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required/>
 						</div>
 						<div style="text-align: center;">
+							<button type="button" data-toggle='modal' data-dismiss="modal" data-target='#getStartedModal' class="btn btn-light button" style="margin: 15px; font-size: 1em; opacity: 0.8;">Back</button>
 							<button type="submit" class="btn btn-primary submit_button" value="sign up" style="margin: 15px">Submit</button>
 						</div>
 					</form>
