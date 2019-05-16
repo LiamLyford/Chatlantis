@@ -21,13 +21,15 @@ var sendRegister = () => {
         alert('Email is already in use');
         event.preventDefault();
         return false
+    }else{
+        alert('Thanks! Your account has been successfully created!')
     }
     // else if(upassword.search(re) === -1){
     //     alert('Password must contain a uppercase letter, lowercase letter, a number and a special character(!@#\\$%\\^&\\*)')
     //     event.preventDefault();
     //     return false
     // }
-}
+};
 
 var sendLogin = () => {
     var register = new window.XMLHttpRequest();
@@ -47,4 +49,4 @@ var sendLogin = () => {
         event.preventDefault();
         return false
     }
-}
+};
