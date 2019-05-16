@@ -257,6 +257,6 @@ chat.on('connection', (socket) => {
 });
 
 http.listen(port, ()=>{
-    console.log('Server is up on the port 8080');
+    console.log('Server is up on the port '+port);
     utils.init();
 });

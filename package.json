@@ -21,14 +21,16 @@
     "add-font": "^1.0.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
+    "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "hbs": "^4.0.4",
     "mongodb": "^3.2.3",
-    "typeface-roboto": "0.0.54",
     "node-emoji": "^1.10.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "supertest": "^4.0.2",
+    "typeface-roboto": "0.0.54"
   },
   "engines": {
     "node": "10.x"
@@ -36,6 +38,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
-    "mocha-simple-html-reporter": "^1.1.0"
+    "mocha-simple-html-reporter": "^1.1.0",
+    "nyc": "^14.1.1"
   }
 }
