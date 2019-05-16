@@ -10,35 +10,54 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 const website = chai.request('http://localhost:8080');
-describe('Testing Page Render',function(){
-    it('index',function(){
-       website.get('/').end(function(err,res){
+describe('Testing Page Render', function () {
+    it('/', function () {
+        website.get('/').end(function (err, res) {
             expect(err).to.be.null;
             expect(res).to.have.status(200);
-       })
+        })
     })
-    it('Login test', function(){
-        website.get('/login').end(function(err,res){
+    it('/login', function () {
+        website.get('/login').end(function (err, res) {
             expect(err).to.be.null;
             expect(res).to.have.status(200);
         })
     });
-    it('Sign Up',function(){
-        website.get('/signup').end(function(err,res) {
+    it('/signup', function () {
+        website.get('/signup').end(function (err, res) {
             expect(err).to.be.null;
             expect(res).to.have.status(200);
         });
     });
-    it('Chatroom',function() {
+    it('/chatroom', function () {
         website.get('/chatroom').end(function (err, res) {
             expect(err).to.be.null;
             expect(res).to.have.status(200);
         });
     });
-    it('Profile',function(){
-        website.get('/profile/navi').end(function(err,res){
+    it('/profile', function () {
+        website.get('/profile/navi').end(function (err, res) {
             expect(err).to.be.null;
             expect(res).to.have.status(200);
-        }) ;
+        });
+    });
+    it('/logout',function(){
+        website.get('/').end(function(err,res){
+            expect(err).to.be.null;
+            expect(res).to.have.status(200);
+        })
+    })
+    it('login/incorrect', function () {
+        website.get('/login/incorrect').end(function (err, res) {
+                expect(res).to.have.status(200);
+                expect(err).to.be.null;
+
+            });
+    });
+    it('login/signup/exists',function(){
+        website.get('/signup/exists').end(function(err,res){
+            expect(res).to.have.status(200);
+            expect(err).to.have.status(200);
+        })
     });
 });
