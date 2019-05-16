@@ -41,23 +41,23 @@ describe('Testing Page Render', function () {
             expect(res).to.have.status(200);
         });
     });
-    it('/logout',function(){
-        website.get('/').end(function(err,res){
+    it('/logout', function () {
+        website.get('/').end(function (err, res) {
             expect(err).to.be.null;
             expect(res).to.have.status(200);
         })
     })
     it('login/incorrect', function () {
         website.get('/login/incorrect').end(function (err, res) {
-                expect(res).to.have.status(200);
-                expect(err).to.be.null;
-
-            });
-    });
-    it('login/signup/exists',function(){
-        website.get('/signup/exists').end(function(err,res){
             expect(res).to.have.status(200);
-            expect(err).to.have.status(200);
+            expect(err).to.be.null;
+
+        });
+    });
+    it('login/signup/exists', function () {
+        website.get('/signup/exists').end(function (err, res) {
+            expect(err).to.be.null;
+            expect(res).to.have.status(200);
         })
     });
 });

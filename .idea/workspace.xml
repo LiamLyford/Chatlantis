@@ -33,8 +33,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/urlTest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+            <state relative-caret-position="203">
+              <caret line="58" column="23" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/chai-http/lib/http.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -42,8 +51,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/messagesTest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="7" column="100" selection-start-line="7" selection-start-column="100" selection-end-line="7" selection-end-column="100" />
+            <state relative-caret-position="48">
+              <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -194,7 +211,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Mocha.test\urlTest.js">
+  <component name="RunManager" selected="Node.js.server.js">
+    <configuration name="messagesTest.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/test/messagesTest.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -212,18 +232,6 @@
         <name value="Testing Page Render" />
         <name value="index" />
       </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="test\endpointTest.js" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>TEST_FILE</test-kind>
-      <test-file>$PROJECT_DIR$/test/endpointTest.js</test-file>
       <method v="2" />
     </configuration>
     <configuration name="test\test.js" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
@@ -252,11 +260,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.messagesTest.js" />
         <item itemvalue="Mocha.test\urlTest.js" />
         <item itemvalue="Mocha.Testing Page Render.index" />
-        <item itemvalue="Node.js.server.js" />
         <item itemvalue="Mocha.test\test.js" />
-        <item itemvalue="Mocha.test\endpointTest.js" />
       </list>
     </recent_temporary>
   </component>
@@ -277,14 +285,11 @@
       <workItem from="1557782039402" duration="1045000" />
       <workItem from="1557872679502" duration="2520000" />
       <workItem from="1558040272779" duration="2260000" />
-      <workItem from="1558044172001" duration="576000" />
+      <workItem from="1558044172001" duration="919000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="test_endpointTest_js - 2019.05.16 at 14h 25m 04s.xml">
-      <configuration name="test\endpointTest.js" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
     <history-entry file="test_test_js - 2019.05.16 at 14h 32m 20s.xml">
       <configuration name="test\test.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
@@ -312,25 +317,27 @@
     <history-entry file="test_urlTest_js - 2019.05.16 at 15h 10m 38s.xml">
       <configuration name="test\urlTest.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
+    <history-entry file="test_urlTest_js - 2019.05.16 at 15h 13m 08s.xml">
+      <configuration name="test\urlTest.js" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26317000" />
+    <option name="totallyTimeSpent" value="26660000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="935" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.11401425" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="npm" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.32884097" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.328" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.33466667" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.33466667" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -467,13 +474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/messagesTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="100" selection-start-line="7" selection-start-column="100" selection-end-line="7" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/chat.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1032">
@@ -498,10 +498,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/messagesTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/chai-http/lib/http.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/urlTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+        <state relative-caret-position="203">
+          <caret line="58" column="23" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
         </state>
       </provider>
     </entry>
