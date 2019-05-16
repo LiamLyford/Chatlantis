@@ -58,7 +58,20 @@ hbs.registerHelper('getCurrentYear', ()=>{
     return today.getFullYear();
 });
 
+// app.get('/setCookie', (req, res) => {
+//     res.cookie('name', 'value').send('cookie = set');
+// })
+
+// app.get('/getCookie', (req, res) => {
+//     console.log("Cookies :  ", req.cookies.name);
+//     res.send('got cookie');
+// })
+
 app.get('/', (req, res)=>{
+    if(req.cookies.remembered) {
+        req.session.username = req.cookies.username;
+        res.redirect('/chatroom');
+    }
     res.render('index.hbs', {
         title: 'Home page',
         h1: 'Welcome .....',
@@ -103,12 +116,19 @@ app.post('/login-form', (req, res)=> {
             res.send('Unable to find user.');
         }
         if (user.length == 0){
-            res.redirect('/login/incorrect');
+            res.send('Error: No user found');
         }else{
             // console.log(typeof password);
             // console.log(user[0].hash);
             if (bcrypt.compareSync(password, user[0].hash)){
-                req.session.user = user;
+                if (req.body.rememberMe === "yes"){
+                    res.cookie('username', req.body.username);
+                    res.cookie('remembered', true);
+                } else {
+                    res.cookie('username', req.body.username, {expires: new Date()});
+                    res.cookie('remembered', true, {expires: new Date()});
+                }
+                req.session.username = user[0].username;
                 res.redirect('/chatroom');
             }else{
                 res.redirect('/login/incorrect');
@@ -174,7 +194,8 @@ app.post('/signup-form', (req, res)=> {
                 email: email,
                 registration_date: today
             });
-            res.redirect('/login');
+            req.session.username = user[0].username;
+            res.redirect('/chatroom');
         }else{
             res.redirect('/signup/exists');
         }
@@ -183,10 +204,12 @@ app.post('/signup-form', (req, res)=> {
 });
 
 app.get('/logout', (req, res)=> {
-    var index = clients.indexOf(req.session.user[0].username);
+    var index = clients.indexOf(req.session.username);
     if (index > -1) {
        clients.splice(index, 1);
     }
+    res.cookie('username', req.body.username, {expires: new Date()});
+    res.cookie('remembered', true, {expires: new Date()});
     req.session.destroy();
     res.redirect("/");
 });
@@ -208,16 +231,63 @@ app.get('/profile/:username', function(req, res) {
     });
 });
 
+app.post('/checkreg',(req,res)=>{
+    let db = utils.getDb();
+    let servercheck = {};
+    // console.log(req.body)
+    db.collection('users').find({email: req.body.email}).toArray((err,result)=>{
+        if (err) {
+            res.send("An error occurred when accessing the database.");
+            throw err
+        }
+        // console.log(result.length);
+        servercheck['email'] = result.length !== 0;
+        db.collection('users').find({username: req.body.name}).toArray((err,result)=>{
+            if (err) {
+                res.send("An error occurred when accessing the database.");
+                throw err
+            }
+            servercheck['username'] = result.length !== 0;
+            // console.log(servercheck)
+            res.send(servercheck)
+        })
+    });
+});
+
+app.post('/checkLogin',(req,res)=>{
+    let db = utils.getDb();
+    // console.log(req.body)
+    db.collection('users').find({username:req.body.username}).toArray(function(err,user){
+        if (err){
+            throw err
+        }
+        // console.log(user)
+        if (user.length == 0){
+            res.send(true);
+        }else{
+            // console.log(typeof password);
+            // console.log(user[0].hash);
+            if (bcrypt.compareSync(req.body.password, user[0].hash)){
+                res.send(false);
+            }else{
+                res.send(true);
+            }
+
+        }
+
+    });
+});
+
 app.get('/chatroom', (req, res)=> {
-    if (!req.session.user){
-        res.redirect('/login')
+    if (!req.session.username){
+        res.redirect('/')
     }else{
-        clients.push(req.session.user[0].username);
+        clients.push(req.session.username);
         res.render('chat.hbs', {
             title: 'Chatlantis',
             page: 'Log out',
             link: '/logout',
-            username: `${req.session.user[0].username}`
+            username: `${req.session.username}`
         });
     }
 });
@@ -281,3 +351,5 @@ http.listen(port, ()=>{
     console.log('Server is up on the port 8080');
     utils.init();
 });
+
+module.exports = app;
