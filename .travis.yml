@@ -10,4 +10,4 @@ deploy:
   provider: heroku
   api_key:
     secure: b741174f-f3c4-42da-841e-dd067d0b2148
-    app: calm-bayou-76695
+  app: calm-bayou-76695
