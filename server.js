@@ -68,17 +68,19 @@ hbs.registerHelper('getCurrentYear', ()=>{
 // })
 
 app.get('/', (req, res)=>{
-    if(req.cookies.remembered) {
+    if(req.cookies.remembered === 'true') {
         req.session.username = req.cookies.username;
         res.redirect('/chatroom');
     }
-    res.render('index.hbs', {
-        title: 'Home page',
-        h1: 'Welcome .....',
-        link1: 'Sign up',
-        link2: 'Log in',
-        pages: ['/signup', '/login']
-    });
+    else{
+        res.render('index.hbs', {
+            title: 'Home page',
+            h1: 'Welcome .....',
+            link1: 'Sign up',
+            link2: 'Log in',
+            pages: ['/signup', '/login']
+        });
+    }
 });
 
 app.get('/login', (req, res)=> {
@@ -122,8 +124,8 @@ app.post('/login-form', (req, res)=> {
             // console.log(user[0].hash);
             if (bcrypt.compareSync(password, user[0].hash)){
                 if (req.body.rememberMe === "yes"){
-                    res.cookie('username', req.body.username);
-                    res.cookie('remembered', true);
+                    res.cookie('username', req.body.username, {expires: new Date(Date.now() + 900000000)});
+                    res.cookie('remembered', true, {expires: new Date(Date.now() + 900000000)});
                 } else {
                     res.cookie('username', req.body.username, {expires: new Date()});
                     res.cookie('remembered', true, {expires: new Date()});
