@@ -1,0 +1,176 @@
+.background {
+    background-image: url("/static/images/background.jpeg");
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.backgroundColor {
+    background-color: white;
+    opacity: 0.8;
+}
+
+.margin1 {
+    margin-top: 100px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-bottom: 150px;
+    align-content: center;
+
+}
+
+.font1 {
+    font-family: 'Aquawax Black';
+    font-size: calc(12px + 4vw)
+}
+
+.LogColor {
+    background-color: white;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 40px;
+    position: relative;
+    border: black solid 5px;
+    border-radius: 25px;
+    margin-bottom: 100px;
+}
+
+.ProfileColor {
+    background-color: white;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    border: black solid 5px;
+    border-radius: 25px;
+    margin-bottom: 100px;
+}
+
+.margin2 {
+    margin-left: 20px;
+    padding: 3px;
+}
+
+.margin3 {
+    margin: 30px;
+    text-align: center;
+}
+
+.font1 {
+    font-family: 'Aquawax Black';
+}
+
+.font2 {
+    font-family: "Comic Sans MS";
+}
+
+.font3 {
+    font-family: 'Aquawax Black';
+    font-size: 60px;
+}
+
+.font4 {
+    font-family: Arial;
+    font-weight: bolder;
+}
+
+.font4::placeholder {
+    color: darkgray;
+    font-weight: lighter;
+}
+
+.submit_button {
+    font-family: "Comic Sans MS";
+    color: white;
+    background-color: black;
+    border: none;
+}
+
+.submit_button:hover {
+    color: white;
+    background-color: gray;
+}
+
+.button {
+    font-family: "Comic Sans MS";
+    color: #fff;
+    background-color: gray;
+    border: none;
+}
+
+.button:hover {
+    color: white;
+    background-color: black;
+}
+
+.button1 {
+    font-family: "Comic Sans MS";
+    color: black;
+    background-color: white;
+    border: none;
+}
+
+.button1:hover {
+    color: white;
+    background-color: gray;
+}
+
+.align {
+    text-align: center;
+}
+
+.align2 {
+    text-align: center;
+    padding: 0px;
+}
+
+.footertext {
+    font-size: 20px;
+    color: white;
+}
+
+@font-face {
+    font-family: 'Aquawax Black';
+    src: url('/static/fonts/aquawax-blacktrial-webfont.eot');
+    src: url('/static/fonts/aquawax-blacktrial-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/aquawax-blacktrial-webfont.woff2') format('woff2'),
+    url('/static/fonts/aquawax-blacktrial-webfont.woff') format('woff'),
+    url('/static/fonts/aquawax-blacktrial-webfont.ttf') format('truetype'),
+    url('/static/fonts/aquawax-blacktrial-webfont.svg#aquawax-blacktrialregular') format('svg');
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-top: 1px solid #d4d4d4;
+    overflow: hidden;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
+
+#autocompleteContainer {
+    position: relative;
+}

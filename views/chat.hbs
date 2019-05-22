@@ -4,8 +4,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>{{title}}</title>
     {{> bootstrap}}
-    {{> Style}}
-    {{> chatStyle}}
+    <link rel="stylesheet" type="text/css" href="/static/css/chatStyle.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body class="background">
@@ -32,15 +32,13 @@
             <ul id="messages"></ul>
           </div>
         </div>
-        <div class="formContainer" id="formContainer">
-            <div class="adiv">
+      </div>
+      <div class="formContainer" id="formContainer">
           <form id="f" action="" onsubmit='postMessage()'>
             <input id="m" autocomplete="off" maxlength="200"  placeholder="Type something..." autofocus/>
             <button type="button" class="emojiButton" onclick="showPicker()">😃</button>
-            <button class = "button2">Send</button>
           </form>
-            </div>
-          <div id="emojiPicker">
+          <div id="emojiPicker" style="display: none;">
               <button class= "emoji" onclick= "paste(':grinning:')">😀</button>
               <button class= "emoji" onclick= "paste(':smiley:')">😃</button>
               <button class= "emoji" onclick= "paste(':smile:')">😄</button>
@@ -82,14 +80,14 @@
               <button class= "emoji" onclick= "paste(':sushi:')">🍣</button>
               <button class= "emoji" onclick= "paste(':poultry_leg:')">🍗</button>
           </div>
-        </div>
       </div>
     </div>
   </body>
   <script src="/static/js/autocomplete.js"></script>
   <script>
     autocomplete(document.getElementById("m"), shortcodes, icons);
+    var username = "{{username}}";
   </script>
   {{> footer}}
-  {{> chatScript}}
+  <script src="/static/js/messages.js"></script>
 </html>
